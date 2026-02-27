@@ -1,0 +1,21 @@
+# --- CONFIGURACIÓN PARA ECLIPSE WINDOWS/LINUX ---
+
+# Ignorar la configuración global de la instancia de Eclipse
+# (Linux creará la suya propia al abrir el workspace)
+.metadata/
+.recommenders/
+
+# Ignorar las carpetas donde se guarda el código compilado
+# (Los archivos .class de Windows no sirven en Linux)
+**/bin/
+**/target/
+
+# Ignorar archivos de configuración interna del proyecto
+# Esto evita errores de rutas (C:/... vs /home/...)
+**/.settings/
+**/.project
+**/.classpath
+
+# Ignorar archivos temporales del sistema operativo
+Thumbs.db
+.DS_Store

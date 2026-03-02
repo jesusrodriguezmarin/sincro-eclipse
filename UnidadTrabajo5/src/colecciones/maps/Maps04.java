@@ -1,5 +1,3 @@
-Hacer igual metiendo los nombres por teclado
-
 package colecciones.maps;
 
 import java.util.HashMap;

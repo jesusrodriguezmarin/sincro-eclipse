@@ -1,0 +1,10 @@
+package pruebaJerarquia.arbol;
+
+public class Clases {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

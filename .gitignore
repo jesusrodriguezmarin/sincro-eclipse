@@ -12,9 +12,9 @@
 
 # Ignorar archivos de configuración interna del proyecto
 # Esto evita errores de rutas (C:/... vs /home/...)
-**/.settings/
-**/.project
-**/.classpath
+#**/.settings/
+#**/.project
+#**/.classpath
 
 # Ignorar archivos temporales del sistema operativo
 Thumbs.db

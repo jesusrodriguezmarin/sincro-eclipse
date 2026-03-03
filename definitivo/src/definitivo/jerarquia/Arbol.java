@@ -13,8 +13,8 @@ public class Arbol {
 		
 		// Le añado palabras
 		conjunto.add("Hola");
-		conjunto.add("Mundo");
 		conjunto.add("puto");
+		conjunto.add("Mundo");
 		conjunto.add("!");
 		
 		Iterator<String> i = conjunto.iterator();

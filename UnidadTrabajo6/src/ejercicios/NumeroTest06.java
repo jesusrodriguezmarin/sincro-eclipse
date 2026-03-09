@@ -33,6 +33,12 @@ public class NumeroTest06 {
 		System.out.println(N.getTriple());
 		System.out.println(n.getValor());
 		System.out.println(N.getValor());
+		
+		// Reinicializamos el dato con setNum
+		n.setNum(0);
+		N.setNum(0);
+		System.out.println(n.getValor());
+		System.out.println(N.getValor());
 
 	}
 

@@ -17,6 +17,7 @@ public class Videojuego implements Entregable {
 	 */
 	public Videojuego() {
 		this("", HORAS_ESTIMADAS_DEF, "", "");
+		
 	}
 	
 	/**

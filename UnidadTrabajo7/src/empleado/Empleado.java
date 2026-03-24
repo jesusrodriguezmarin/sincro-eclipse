@@ -80,8 +80,8 @@ public abstract class Empleado {
 	 */
 	public double salarioBase() {
 		double res = Empleado.SALARIO_MIN;
-		if (this.horas>20) {
-			res += (this.horas-20)*50;
+		if (this.horas>HORAS_DEF) {
+			res += (this.horas-HORAS_DEF)*50;
 		}
 		return res;
 	}

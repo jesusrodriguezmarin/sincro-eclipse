@@ -8,14 +8,8 @@ public class Cocinero extends Empleado {
 	// Atributos
 	private int experiencia;
 
-	/**
-	 * Constructor con 2 parámetros
-	 * @param nombre
-	 * @param experiencia
-	 */
 	public Cocinero(String nombre, int experiencia) {
-		super(nombre);
-		this.experiencia = experiencia;
+		this(nombre, Empleado.HORAS_DEF, experiencia);
 	}
 	
 	/**
@@ -57,8 +51,8 @@ public class Cocinero extends Empleado {
 	 */
 	@Override
 	public double salarioFinal() {
-		double res = Empleado.SALARIO_MIN;
-		res += 75 * this.experiencia;
+		double res = super.salarioBase();
+		res += EXPERIENCIA * this.experiencia;
 		return res;
 	}
 	

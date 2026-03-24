@@ -6,14 +6,15 @@ public class Camarero extends Empleado {
 	private double propina;
 
 	/**
-	 * Constructor con 2 parámetros
+	 * Constructor con 3 parámetros
 	 * @param nombre
 	 * @param propina
+	 * @param horas
 	 */
 	public Camarero(String nombre, double propina) {
-		super(nombre);
-		this.propina = propina;
+		this(nombre, HORAS_DEF, propina);
 	}
+
 
 	/**
 	 * Constructor con 3 parámetros

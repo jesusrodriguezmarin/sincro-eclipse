@@ -23,3 +23,6 @@ Thumbs.db
 
 # Ignorar archivos drive con peso mayor al permitido en github en ocasiones
 .tmp.driveupload/
+
+bin/
+*.class

@@ -30,7 +30,7 @@ public class Television extends Electrodomestico {
 		 */
 		public Television(int carga, double precioBase, double peso, char consumoEnergetico, String color) {
 			super(precioBase, peso, consumoEnergetico, color);
-			this.resolucion = resolucion;
+			this.resolucion = RESOLUCION_DEF;
 		}
 
 	/**
@@ -67,5 +67,4 @@ public class Television extends Electrodomestico {
 		return "Lavadora: color " + color + ", peso" + peso + " kg, consumo energético " + consumoEnergetico
 				+ ", resolucion " + resolucion + ", precio final " + this.precioFinal() + " euros";
 	}
-	arreglar que falla en television
 }

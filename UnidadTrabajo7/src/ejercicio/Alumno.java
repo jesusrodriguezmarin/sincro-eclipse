@@ -3,12 +3,12 @@ package ejercicio;
 public abstract class Alumno {
 
 	// Constante
-	public final int TOTAL_HORAS=30;
+	public final double NOTA_DEF=7.50;
 	
 	// Atributos
-	private String nombre;
-	private int horas;
-	private String curso;
+	protected String nombre;
+	protected double nota;
+	protected String titulo;
 	
 	/**
 	 * Constructor con dos atributos como parámetro
@@ -16,10 +16,10 @@ public abstract class Alumno {
 	 * @param horas
 	 * @param curso
 	 */
-	public Alumno(String nombre, String curso) {
+	public Alumno(String nombre, String titulo) {
 		this.nombre = nombre;
-		this.horas = TOTAL_HORAS;
-		this.curso = curso;
+		this.nota = NOTA_DEF;
+		this.titulo = titulo;
 	}
 
 	/**
@@ -28,52 +28,58 @@ public abstract class Alumno {
 	 * @param horas
 	 * @param curso
 	 */
-	public Alumno(String nombre, int horas, String curso) {
+	public Alumno(String nombre, double nota , String titulo) {
 		this.nombre = nombre;
-		this.horas = horas;
-		this.curso = curso;
+		this.nota = nota;
+		this.titulo = titulo;
 	}
 
 	/**
-	 * @return the nombre
+	 * Devuelve el nombre del alumno
+	 * @return the nombre {String} del alumno
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
-	 * @param nombre the nombre to set
+	 * Establece el nombre del alumno
+	 * @param nombre {Sting} the nombre a establecer
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
 	/**
-	 * @return the horas
+	 * Devuelve la nota del alumno
+	 * @return la nota {double} las nota del alumno
 	 */
-	public int getHoras() {
-		return horas;
+	public double getHoras() {
+		return nota;
 	}
 
 	/**
-	 * @param horas the horas to set
+	 * Establece la nota del alumno
+	 * @param nota {double} a establecer
 	 */
-	public void setHoras(int horas) {
-		this.horas = horas;
+	public void setHoras(double nota) {
+		this.nota = nota;
 	}
 
 	/**
-	 * @return the curso
+	 * Devuelve el titulo del alumno
+	 * @return the titulo {String} del alumno
 	 */
 	public String getCurso() {
-		return curso;
+		return titulo;
 	}
 
 	/**
-	 * @param curso the curso to set
+	 * Establece el titulo del alumno
+	 * @param el titulo {String} a establecer
 	 */
-	public void setCurso(String curso) {
-		this.curso = curso;
+	public void setCurso(String titulo) {
+		this.titulo = titulo;
 	}
 
 	/*
@@ -81,10 +87,10 @@ public abstract class Alumno {
 	 */
 	@Override
 	public String toString() {
-		return "Alumno [nombre=" + nombre + ", horas=" + horas + ", curso=" + curso + "]";
+		return "Alumno: "+this.nombre+"\nCurso: "+this.titulo+" ("+this.nota+" nota media)";
 	}
 	
 	// Método abstracto
-	public abstract int horasTotales();
+	public abstract double notaFinal();
 	
 }

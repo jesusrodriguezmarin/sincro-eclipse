@@ -3,10 +3,10 @@ package herenciaEjemplo;
 public class Electrodomestico {
 
 	// Constantes
-	protected final static double PRECIO_DEF = 100;
-	protected final static double PESO_DEF = 5;
-	protected final static char CONSUMO_DEF = 'F';
-	protected final static String COLOR_DEF = "blanco";
+	public final static double PRECIO_DEF = 100;
+	public final static double PESO_DEF = 5;
+	public final static char CONSUMO_DEF = 'F';
+	public final static String COLOR_DEF = "blanco";
 
 	// Atributos
 	protected double precioBase;
@@ -20,21 +20,15 @@ public class Electrodomestico {
 	 * Constructor por defecto
 	 */
 	public Electrodomestico() {
-		precioBase = PRECIO_DEF;
-		peso = PESO_DEF;
-		consumoEnergetico = CONSUMO_DEF;
-		color = COLOR_DEF;
+		this(PRECIO_DEF, PESO_DEF, CONSUMO_DEF, COLOR_DEF);
 	}
 
 	/**
-	 * Constructor con dos parámetros: precipBase y peso del electrodoméstico
-	 * 
-	 * @param precioBase {double} Precio del electrodoméstico
-	 * @param peso       {double} Peso del electrodoméstico
+	 * @param precioBase
+	 * @param peso
 	 */
 	public Electrodomestico(double precioBase, double peso) {
-		this.precioBase = precioBase;
-		this.peso = peso;
+		this(precioBase, peso, CONSUMO_DEF, COLOR_DEF);
 	}
 
 	/**
@@ -107,13 +101,23 @@ public class Electrodomestico {
 		}
 	}
 
+	/**
+	 * Comprueba el color del electrodoméstico
+	 * @param color {String} a comprobar
+	 */
 	private void comprobarColorElectrodomestico(String color) {
 		String colores[] = { "blanco", "negro", "rojo", "azul", "gris" };
 		boolean encontrado = false;
 
 		for (int i = 0; i < colores.length && !encontrado; i++) {
-			if (colores[i].equals(color))
+			if (colores[i].equalsIgnoreCase(color))
 				encontrado = true;
+		}
+		
+		if (encontrado) {
+			this.color = color.toLowerCase();
+		} else {
+			this.color = Electrodomestico.COLOR_DEF;
 		}
 
 	}

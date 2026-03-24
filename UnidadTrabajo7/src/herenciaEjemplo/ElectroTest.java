@@ -14,8 +14,7 @@ public class ElectroTest {
 		
 		lista[0] = new Electrodomestico(200, 60, 'C', "Verde");
 		lista[1] = new Lavadora(150, 30);
-		// Arrglar esto
-		// lista[2] = new Television(500, 80, 'E', "negro", 65);
+		lista[2] = new Television(500, 80, 'E', "negro", 65);
 		lista[3] = new Electrodomestico();
 		lista[4] = new Electrodomestico(250, 70);
 		

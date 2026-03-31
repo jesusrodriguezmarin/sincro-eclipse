@@ -1,4 +1,4 @@
-package recuperacion;
+package recuperacion.date;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,6 +46,7 @@ public class Edad {
 		int m = sc.nextInt();
 		System.out.print("Día: ");
 		int d = sc.nextInt();
+		sc.close();
 		
 		
 		

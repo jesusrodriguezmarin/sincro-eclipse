@@ -1,4 +1,4 @@
-package recuperacion;
+package recuperacion.date;
 
 import java.util.Scanner;
 

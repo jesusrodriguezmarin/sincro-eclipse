@@ -13,7 +13,7 @@ public class MostrarLongitud {
 		for (int i=0; i<array.length; i++) {
 			System.out.print(array[i]+" ");
 		}
-		System.out.println();
+		System.out.println("De locos");
 	}
 	
 	// Programa principal

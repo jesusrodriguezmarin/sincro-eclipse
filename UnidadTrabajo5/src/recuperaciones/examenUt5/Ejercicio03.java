@@ -13,8 +13,9 @@ public class Ejercicio03 {
 
 		// Creamos un StringBuffer
 		StringBuffer cad = new StringBuffer(nombre);
+
 		System.out.println("\n> Nombre del revés: " + cad.reverse());
-		char z;
+
 		// Cambiamos las vocales a mayusculas
 		for (int i = 0; i < nombre.length(); i++) {
 			if (nombre.charAt(i) == 'a' || nombre.charAt(i) == 'e' || nombre.charAt(i) == 'i' || nombre.charAt(i) == 'o'
@@ -26,24 +27,27 @@ public class Ejercicio03 {
 
 		// pedimos un caracter y lo reemplazamos a por espacios en blanco
 		String caracter;
-		char c;
+		
 		System.out.print("\nEscribe un caracter (a-z | A-Z): ");
+		
 		caracter = tcl.nextLine();
-		for (int i=0; i<nombre.length(); i++) {
-			 {
-				
+		for (int i = 0; i < nombre.length(); i++) {
+			{
+				if (cad.charAt(i) == caracter.charAt(0)) {
+					cad.setCharAt(i, ' ');
+				}
 			}
 		}
-		
+
 		tcl.close();
-		
+
 		// Eliminamos los espacios en blanco
-		for (int i=0; i<nombre.length()-1; i++) {
-			if (cad.charAt(i)==' ') {
+		for (int i = cad.length()-1; i>=0; i--) {
+			if (cad.charAt(i) == ' ') {
 				cad.deleteCharAt(i);
 			}
 		}
-		System.out.println("Eliminamos los espacios"+cad);
+		System.out.println("Eliminamos los espacios" + cad);
 	}
 
 }

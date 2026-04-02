@@ -6,18 +6,26 @@ import java.util.Date;
 public class Ejercicio01 {
 
 	public static void main(String[] args) {
+		
 		// Creamos una clase DATE
-		Date actual=new Date();
+		Date hoy = new Date();
 		
-		// La formateamos
-		SimpleDateFormat formato= new SimpleDateFormat();
+		// Creamos una instancia para usar el constructor 
+		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+		System.out.println("Fecha: "+formato.format(hoy));
 		
-		// Mostramos el dia actual
-		System.out.print(formato.format(actual));
+		// Creamos instancia para formatear hora
+		formato = new SimpleDateFormat("hh:mm:ss a");
+		System.out.println("Hora (12h): "+formato.format(hoy));
 		
-		formato=new SimpleDateFormat("\nhh:mm:ss aaaa");
+		// Creamos instancia para formatear hora a 24
+		formato = new SimpleDateFormat("HH:mm:ss");
+		System.out.println("Hora (24h): "+formato.format(hoy));
 		
-		System.out.print(formato.format(actual));
+		// Creamos instancia para formatear el nombre del día y mes
+		formato = new SimpleDateFormat("EEEE, d 'de' MMMM 'de' yyyy");
+		System.out.println("Formato largo: "+formato.format(hoy));
+
 
 	}
 

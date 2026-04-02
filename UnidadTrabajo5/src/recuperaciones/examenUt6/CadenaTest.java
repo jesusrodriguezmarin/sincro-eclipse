@@ -5,11 +5,14 @@ import java.util.Scanner;
 public class CadenaTest {
 
 	public static void main(String[] args) {
-		char esp=' ';
+
+		char esp = ' ';
+
 		// Creamos un scanner
 		Cadena cad = new Cadena();
+
 		Scanner tcl = new Scanner(System.in);
-		System.out.print("Introduce un nómbre: ");
+		System.out.print("Introduce un nombre: ");
 		cad.setCadena(tcl.nextLine());
 
 		System.out.println("> Nombre original: " + cad.getCadena());
@@ -22,12 +25,16 @@ public class CadenaTest {
 
 		System.out.print("\nEscribe un caracter: ");
 		char letra = tcl.nextLine().charAt(0);
-		
+
 		if (cad.contarLetra(letra) == 0) {
 			System.out.print("\n> No se han encontrado ocurrencias del caraceter '" + letra + "' en el nombre");
 		} else {
-			System.out.println("> Reemplazamos el carácter '" + letra + "' por espacios en blanco: " + cad.getCadena().replace(letra, esp));
-			System.out.println("> Eliminamos espacios en blanco: "+cad.getCadena());
+			String nueva = cad.getCadena().replace(letra, esp);
+			cad.setCadena(nueva);
+			
+			System.out.println("> Reemplazamos el carácter '" + letra + "' por espacios en blanco: "
+					+ cad.getCadena());
+			System.out.println("> Eliminamos espacios en blanco: " + cad.getCadena().replace(" ", ""));
 
 		}
 

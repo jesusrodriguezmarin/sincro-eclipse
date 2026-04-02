@@ -3,6 +3,8 @@ package recuperaciones.examenUt5;
 import java.util.Scanner;
 
 public class Ejercicio02 {
+
+	// Constantes
 	final static int LIM = 10;
 	final static int TAM = 8;
 
@@ -12,13 +14,16 @@ public class Ejercicio02 {
 	 * @param a
 	 * @return
 	 */
-	public static int generar(int a) {
+	public static int generar(int LIM) {
 		return (int) (Math.random() * LIM + 1);
 	}
 
+	// Programa principal
 	public static void main(String[] args) {
+
 		// Creamos un array
 		int[] array = new int[TAM];
+
 		// Almacenamos 8 números enteros en el array
 		for (int i = 0; i < array.length; i++) {
 			array[i] = generar(LIM);
@@ -38,9 +43,11 @@ public class Ejercicio02 {
 		try {
 			System.out.print("\n\nValor a reemplazar: ");
 			n = tcl.nextInt();
+			
 			for (int i = 0; i < array.length; i++) {
 				if (array[i] == n) {
 					verificacion = true;
+					break;
 				}
 
 			}
@@ -49,16 +56,20 @@ public class Ejercicio02 {
 				System.out.print("\n> No se ha encontrado el valor " + n);
 			} else {
 				System.out.print("Nuevo valor: ");
+				
 				int num = tcl.nextInt();
 				int conta = 0;
+				
 				for (int i = 0; i < array.length; i++) {
-					if (array[i] == num) {
-						array[i] = num ;
+					if (array[i] == n) {
+						array[i] = num;
 						conta++;
 					}
 
 				}
+
 				System.out.print("> Se han realizado " + conta + " reemplazos");
+
 				// Mostramos el array
 				System.out.print("\nValores: ");
 				for (int i = 0; i < array.length; i++) {
@@ -68,7 +79,7 @@ public class Ejercicio02 {
 			}
 
 		} catch (Exception e) {
-			System.out.println("ERRO: Tipo de dato incorrecto");
+			System.out.println("ERROR: Tipo de dato incorrecto");
 		} finally {
 			tcl.close();
 

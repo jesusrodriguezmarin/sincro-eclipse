@@ -1,4 +1,4 @@
-package recuperacion.arrays;
+package recuperaciones.arrays;
 
 public class MostrarLongitud {
 

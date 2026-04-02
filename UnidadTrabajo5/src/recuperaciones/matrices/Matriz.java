@@ -1,4 +1,4 @@
-package recuperacion.matrices;
+package recuperaciones.matrices;
 
 public class Matriz {
 

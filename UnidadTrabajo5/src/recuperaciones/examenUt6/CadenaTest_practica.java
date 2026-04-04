@@ -13,45 +13,53 @@ public class CadenaTest_practica {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Introduce tu nombre: ");
 		String nombre = sc.nextLine();
-		sc.close();
 		
-		// Establecemos la cadena solicitada por consola como cadena con -set
+		// Establecemos el dato solicitadp por consola como cadena con -set y parámetro
 		c.setCadena(nombre);
 		
 		// Mostramos con -get
-		System.out.println(c.getCadena());
+		System.out.print(" > El nombre introducido es: "+c.getCadena());
 		
 		// Mostramos en mayúsculas con el método creado
-		System.out.println(c.mayus());
+		System.out.print("\n > El nombre en mayúsculas es: "+c.mayus());
 		
 		// Mostramos en minúsculas con el método creado
-		System.out.println(c.minus());
+		System.out.print("\n > El nombre en minúsculas es: "+c.minus());
 		
 		// Mostramos la cadena invertida con el método creado
-		System.out.println(c.reverso());
+		System.out.print("\n > El nombre invertido es: "+c.reverso());
 		
 		// Mostramos la longitud de la cadena
-		System.out.println(c.longi());
+		System.out.println("\n > El nombre tiene: "+c.longi()+ "letras");
 		
 		// Mostramos el números de vocales de la cadena
-		System.out.println(c.voc());
+		System.out.println(" > El nombre tiene: "+c.voc()+" vocales");
 		
 		// Mostramos el número de consonantes
-		System.out.println(c.cons());
+		System.out.println(" > El nomnbre tiene: "+c.cons()+" consonantes");
 		
 		// Mostramos el número de apariciones de el caracter introdiucido
-		System.out.println(c.carac('p'));
+		System.out.print("\nIntroduce un caracter para contarlo: ");
+		char contar = sc.nextLine().charAt(0);
+		System.out.println(" > El caracter: "+contar+" aparece "+c.carac(contar)+" veces");
 		
 		// Reemplazamos un caracter de la cadena por otro
-		c.setCadena(c.mayus());
-		c.reemp('P', 'F');
-		System.out.println(c.getCadena());
+		System.out.print("Introduce un caracter a reemplazar: ");
+		char viejo = sc.nextLine().charAt(0);
+		System.out.print("Introduce el nuevo caracter: ");
+		char nuevo = sc.nextLine().charAt(0);
+		
+		c.reemp(viejo, nuevo);
+		System.out.println(" > El nombre con reemplazos es: "+c.getCadena());
 		
 		// Eliminamos el caracter pasado por parámetro
-		c.borra('A');
-		System.out.println(c.getCadena());
+		System.out.print("Introduce un caracter a eliminar: ");
+		char caracter = sc.nextLine().charAt(0);
+		c.borra(caracter);
+		System.out.println(" > El nombre con borrados es: "+c.getCadena());
 			
-		
+		sc.close();
+
 	}
 
 }

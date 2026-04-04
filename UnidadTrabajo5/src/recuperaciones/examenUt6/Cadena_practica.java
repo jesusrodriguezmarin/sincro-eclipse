@@ -25,6 +25,7 @@ public class Cadena_practica {
 	 * @param cadena {String} a establecer
 	 */
 	public void setCadena(String cadena) {
+		// Asigna cadena del parámetro al atributo this.cadena porque es void, establece
 		this.cadena=cadena;
 	}
 	
@@ -33,6 +34,7 @@ public class Cadena_practica {
 	 * @return {String} cadena
 	 */
 	public String getCadena() {
+		// Devuelve el atributo cadena poeque no es void, muestra, no modifica
 		return cadena;
 	}
 
@@ -41,6 +43,7 @@ public class Cadena_practica {
 	 * @return {String} la cadena en mayúsculas
 	 */
 	public String mayus() {
+		// Devuelve el atributo porque no es void, muestra, no modifica
 		return cadena.toUpperCase();
 	}
 	
@@ -49,6 +52,7 @@ public class Cadena_practica {
 	 * @return {String} la cadena en minúsculas
 	 */
 	public String minus() {
+		// Devuelve el atributo porque no es void, muestra, no modifica
 		return cadena.toLowerCase();
 	}
 	
@@ -61,6 +65,7 @@ public class Cadena_practica {
 		for (int i=cadena.length()-1; i>=0; i--) {
 			cad += cadena.charAt(i);
 		}
+		// Devuelve el String declarado porque no es void, muestra, no modifica
 		return cad;
 	}
 		
@@ -69,6 +74,7 @@ public class Cadena_practica {
 	 * @return {int} longitud de la cadena
 	 */
 	public int longi() {
+		// Devuelve el atributo porque no es void, muestra, no modifica
 		return this.cadena.length();
 	}
 		
@@ -78,12 +84,14 @@ public class Cadena_practica {
 	 */
 	public int voc() {
 		int conta = 0;
+		String temp = this.cadena.toLowerCase();
 		for (int i=0; i<this.cadena.length(); i++) {
-			char l = this.cadena.charAt(i);
+			char l = temp.charAt(i);
 			if (l == 'a' || l == 'e' || l == 'i' || l == 'o' || l == 'u') {
 				conta++;
 			}
 		}
+		// Devuelve el int declarado porque no es void, muestra, no modifica el atributo
 		return conta;
 	}
 	
@@ -93,12 +101,16 @@ public class Cadena_practica {
 	 */
 	public int cons() {
 		int conta = 0;
-		for (int i=0; i<this.cadena.length(); i++) {
-			char c = this.cadena.charAt(i);
-			if (c != 'a' && c != 'e' && c != 'i' && c != 'o' && c != 'u') {
+		String temp = cadena.toLowerCase();
+		
+		for (int i=0; i<temp.length(); i++) {
+			char c = temp.charAt(i);
+			if (Character.isLetter(c) && (c != 'a' && c != 'e' && c != 'i' 
+					&& c != 'o' && c != 'u')) {
 				conta++;
 			}
 		}
+		// Devuelve un String declarado porque no es void, muestra, no modifica el atributo
 		return conta;
 	}
 	
@@ -117,6 +129,7 @@ public class Cadena_practica {
 				conta++;
 			}
 		}
+		// Devuelve el int declarado porque no es void, muestra otra variable, no modifica el atributo
 		return conta;
 	}
 	
@@ -126,9 +139,15 @@ public class Cadena_practica {
 	 * @param b - caracter a establecer
 	 */
 	public void reemp(char a, char b) {
-		a = Character.toUpperCase(a);
-		b = Character.toUpperCase(b);
-		this.cadena = cadena.replace(a, b);
+		char aM = Character.toUpperCase(a);
+		char am = Character.toLowerCase(a);
+		
+		char bM = Character.toUpperCase(b);
+		char bm = Character.toLowerCase(b);
+		
+		// Establece el atributo modificado porque es un void
+		this.cadena = cadena.replace(am, bm);
+		this.cadena = cadena.replace(aM, bM);
 	}
 	
 	/**
@@ -136,6 +155,16 @@ public class Cadena_practica {
 	 * @param c - caracter a eliminar
 	 */
 	public void borra(char c) {
-		this.cadena = cadena.replace(c, ' ');
+		StringBuffer cad = new StringBuffer(this.cadena);
+		
+		for (int i=cad.length()-1; i>=0; i--) {
+			char cadm = Character.toUpperCase(cad.charAt(i));
+			char cm = Character.toUpperCase(c);
+			if (cadm == cm) {
+				cad.deleteCharAt(i);
+			}
+		}
+		// Establece el atributo modificado porque es void
+		this.cadena = cad.toString();
 	}
 }

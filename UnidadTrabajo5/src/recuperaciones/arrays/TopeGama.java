@@ -2,7 +2,7 @@ package recuperaciones.arrays;
 
 import java.util.Scanner;
 
-public class ParaBorrar {
+public class TopeGama {
 
 	// Constantes
 	final static int TAM = 5;	// Tamaño del array de números enteros
@@ -142,6 +142,40 @@ public class ParaBorrar {
 		}
 	}
 	
+	/**
+	 * Devuelve cuantos String del array comienzan por la letra l pasada por parámetro
+	 * @param a - array de String
+	 * @param l - char a comprobar
+	 * @return {int} la cantidad de String que comienzan por la letra l
+	 */
+	public static int contarLetra (String[] a, char l) {
+		int conta = 0;
+		
+		for (int i = 0; i < a.length; i++) {
+			char may = a[i].toUpperCase().charAt(0);
+			char min = Character.toUpperCase(l);
+			if (may == min) {
+				conta++;
+			}
+		}
+		
+		return conta;
+	}
+	
+	/**
+	 * Cambiamos un nombre -a por otro -n
+	 * @param s - array de String
+	 * @param a - nombre a eliminar
+	 * @param n - nombre a establecer
+	 */
+	public static void cambiar (String[] s, String a, String n) {
+		for (int i = 0; i < s.length; i++) {
+			if (s[i].equalsIgnoreCase(a)) {
+				s[i] = n;
+			}
+		}
+	}
+	
 	// Programa principal
 	public static void main(String[] args) {
 		
@@ -224,6 +258,21 @@ public class ParaBorrar {
 		System.out.println("\nEl array multiplicado por "+mul+" es: ");
 		multiplicar(numeros, mul);
 		mostrarEnteros(numeros);
+		
+		// Mostramos la cantidad de veces que un String del array empieza por la letra l
+		System.out.print("\nIntroduce un caracter a comprobar: ");
+		char c = sc.nextLine().charAt(0);
+		System.out.println(contarLetra(nombres, c)+" elementos empiezan por: "+c);
+		
+		// Pedimos dos nombres para intercambiar en caso de que esté el antiguo
+		System.out.print("\nIntroduce un nombre para eliminar: ");
+		String viejo = sc.nextLine();
+		System.out.print("Introduce un nombre a establecer: ");
+		String nuevo = sc.nextLine();
+		cambiar(nombres, viejo, nuevo);
+		mostrar(nombres);
+		
+		
 		
 		sc.close();
 	}

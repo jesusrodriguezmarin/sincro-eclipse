@@ -1,4 +1,4 @@
-package recuperaciones.arrays;
+package recuperaciones.arrays.ejercicios1;
 
 public class Ej2_repaso {
 

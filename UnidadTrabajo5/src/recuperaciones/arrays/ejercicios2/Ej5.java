@@ -1,8 +1,8 @@
-package recuperaciones.examenUt5;
+package recuperaciones.arrays.ejercicios2;
 
 import java.util.Scanner;
 
-public class Ejercicio05 {
+public class Ej5 {
 
 	// Constante
 	final static int TAM = 10;

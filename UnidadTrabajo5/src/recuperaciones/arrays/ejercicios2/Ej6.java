@@ -1,8 +1,8 @@
-package recuperaciones.examenUt5;
+package recuperaciones.arrays.ejercicios2;
 
 import java.util.Scanner;
 
-public class Ejercicio06 {
+public class Ej6 {
 
 	// Constante para el tamaño del array
 	final static int TAM = 10;

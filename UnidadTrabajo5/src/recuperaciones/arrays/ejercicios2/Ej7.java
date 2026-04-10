@@ -1,6 +1,6 @@
-package recuperaciones.examenUt5;
+package recuperaciones.arrays.ejercicios2;
 
-public class Ejercicio07 {
+public class Ej7 {
 
 	public static void main(String[] args) {
 

@@ -35,7 +35,7 @@ public class Agenda2 {
 			// Leemos un archivo linea a línea
 			Scanner sc = new Scanner(f);
 			String linea;
-			int conta = 1;
+			int conta = 0;
 
 			// Mientras haya líneas en el fichero
 			while (sc.hasNextLine()) {
@@ -140,7 +140,7 @@ public class Agenda2 {
 			String nombre; // Nombre del contacto
 			int telefono; // Tel�fono del contacto
 
-			// Teclado para pedir nombre y telefono
+			// Teclado 
 			Scanner teclado = new Scanner(System.in);
 
 			do {
@@ -148,6 +148,7 @@ public class Agenda2 {
 				do {
 					System.out.print("Elige una opci�n: ");
 					opcion = Integer.parseInt(teclado.nextLine());
+					
 					switch (opcion) {
 					case 1: // A�ADIR CONTACTO
 						System.out.println("\n>> NUEVO CONTACTO");
@@ -198,6 +199,7 @@ public class Agenda2 {
 
 			System.out.println("Que tengas un buen d�a...");
 			teclado.close();
+			
 		} catch (Exception e) {
 			System.out.println("ERROR. Valor introducido no v�lido");
 		}

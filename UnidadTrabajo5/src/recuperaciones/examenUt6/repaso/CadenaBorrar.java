@@ -1,4 +1,4 @@
-package recuperaciones.examenUt6;
+package recuperaciones.examenUt6.repaso;
 
 public class CadenaBorrar {
 

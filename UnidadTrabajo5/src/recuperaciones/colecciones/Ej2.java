@@ -24,9 +24,7 @@ public class Ej2 {
 				if (conjunto.contains(numero)) {
 					System.out.println("El número ya se encuentra en el conjunto.");
 					System.out.println("No se vuelve a almacenar, prueba con otro.");
-				}
-				
-				if (numero > 0) {
+				} else if (numero > 0) {
 					conjunto.add(numero);
 					System.out.println("Número almacenado");
 				} else  if (numero < 0){

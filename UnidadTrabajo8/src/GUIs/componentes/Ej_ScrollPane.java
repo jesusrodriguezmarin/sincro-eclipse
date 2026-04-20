@@ -2,14 +2,14 @@ package GUIs.componentes;
 
 import javax.swing.*;
 
-public class ScrollPane extends JFrame {
+public class Ej_ScrollPane extends JFrame {
 
 	// Componentes
 	JTextArea area;
 	JScrollPane scpanel;
 
 	// Creamos una ventana con un JTextArea y un JScrollPane
-	public ScrollPane() {
+	public Ej_ScrollPane() {
 		
 		setLayout(null);
 		
@@ -25,7 +25,7 @@ public class ScrollPane extends JFrame {
 	public static void main(String[] args) {
 
 		// Creamos el objeto
-		ScrollPane s = new ScrollPane();
+		Ej_ScrollPane s = new Ej_ScrollPane();
 		
 		s.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		s.setTitle("Ejemplo ScrollPanel");

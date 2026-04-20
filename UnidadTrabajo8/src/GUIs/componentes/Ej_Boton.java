@@ -2,7 +2,7 @@ package GUIs.componentes;
 
 import javax.swing.*;
 
-public class Boton extends JFrame {
+public class Ej_Boton extends JFrame {
 	
 	// Control visual del  botón
 	JButton boton;	
@@ -10,7 +10,7 @@ public class Boton extends JFrame {
 	/**
 	 * Constructor
 	 */
-	public Boton() {
+	public Ej_Boton() {
 		
 		// desactivamos con null para utilizar el posicionamiento absoluto
 		setLayout(null);
@@ -29,7 +29,7 @@ public class Boton extends JFrame {
 	public static void main(String[] args) {
 		
 		// Creamos el objeto boton
-		Boton v = new Boton();
+		Ej_Boton v = new Ej_Boton();
 
 		v.setTitle("Ejemplo botón");
 		v.setSize(300, 150);

@@ -2,7 +2,7 @@ package GUIs.componentes;
 
 import javax.swing.*;
 
-public class CampoTexto extends JFrame {
+public class Ej_CampoTexto extends JFrame {
 
 	/**
 	 * Componentes
@@ -15,7 +15,7 @@ public class CampoTexto extends JFrame {
 	 * Una etiqueta
 	 * Un campo de texto
 	 */
-	public CampoTexto() {
+	public Ej_CampoTexto() {
 		
 		setLayout(null);
 		
@@ -39,7 +39,7 @@ public class CampoTexto extends JFrame {
 	 */
 	public static void main(String[] args) {
 
-		CampoTexto v = new CampoTexto();
+		Ej_CampoTexto v = new Ej_CampoTexto();
 		
 		// Configuramos la ventana: damos titulo, ubicación, tamaño...
 		v.setTitle("Ejemplo CampoTexto");

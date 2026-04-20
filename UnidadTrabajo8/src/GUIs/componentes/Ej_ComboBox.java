@@ -2,13 +2,13 @@ package GUIs.componentes;
 
 import javax.swing.*;
 
-public class ComboBox extends JFrame {
+public class Ej_ComboBox extends JFrame {
 
 	// Componentes
 	JComboBox combo;
 	
 	// Creamos ventana
-	public ComboBox() {
+	public Ej_ComboBox() {
 		setLayout(null);
 		
 		// Creamos el combo y sus items y añadimos
@@ -25,7 +25,7 @@ public class ComboBox extends JFrame {
 	public static void main(String[] args) {
 
 		// Creamos objeto
-		ComboBox v = new ComboBox();
+		Ej_ComboBox v = new Ej_ComboBox();
 		
 		// Configuramos
 		v.setDefaultCloseOperation(EXIT_ON_CLOSE);

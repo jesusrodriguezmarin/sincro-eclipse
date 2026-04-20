@@ -2,13 +2,13 @@ package GUIs.componentes;
 
 import javax.swing.*;
 
-public class CheckBox extends JFrame {
+public class Ej_CheckBox extends JFrame {
 
 	// Componentes
 	JCheckBox check1, check2;
 	
 	// Creamos ventana con dos controles
-	public CheckBox() {
+	public Ej_CheckBox() {
 		setLayout(null);
 		
 		// Creamos los controles y los añadimos
@@ -24,7 +24,7 @@ public class CheckBox extends JFrame {
 	public static void main(String[] args) {
 
 		// Creamos la ventana y configuramos
-		CheckBox c = new CheckBox();
+		Ej_CheckBox c = new Ej_CheckBox();
 		
 		c.setTitle("Ejemplo checkBox");
 		c.setBounds(100, 100, 300,150);

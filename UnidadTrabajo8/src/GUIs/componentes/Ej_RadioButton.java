@@ -2,14 +2,14 @@ package GUIs.componentes;
 
 import javax.swing.*;
 
-public class RadioButton extends JFrame {
+public class Ej_RadioButton extends JFrame {
 
 	// Componente
 	JRadioButton radio1, radio2;
 	ButtonGroup grupoBotones;
 	
 	// Creamos la ventana con dos botones
-	public RadioButton() {
+	public Ej_RadioButton() {
 		setLayout(null);
 		
 		// Creamos el grupo de botones
@@ -33,7 +33,7 @@ public class RadioButton extends JFrame {
 	public static void main(String[] args) {
 
 		// Cramos objeto
-		RadioButton v = new RadioButton();
+		Ej_RadioButton v = new Ej_RadioButton();
 		
 		v.setTitle("Ejempli RadioButton");
 		v.setBounds(10, 10, 330, 150);

@@ -22,6 +22,8 @@ public class CadenaTest {
 		System.out.println("> Número de caracteres: " + cad.longitud());
 		System.out.println("> Número de vocales: " + cad.contarVocales());
 		System.out.println("> Número de consonantes: " + cad.contarConsonantes());
+		cad.reemplazar('p', 'v');
+		System.out.println("> Reemplace: "+ cad.getCadena());
 
 		System.out.print("\nEscribe un caracter: ");
 		char letra = tcl.nextLine().charAt(0);

@@ -17,12 +17,12 @@ public class Ej1_practica {
 		String fecha = formato.format(hoy);
 		System.out.println("Fecha formateada: "+fecha);
 		
-		SimpleDateFormat formato12 = new SimpleDateFormat("hh:mm:ss a");
-		String hora12 = formato12.format(hoy);
+		formato = new SimpleDateFormat("hh:mm:ss a");
+		String hora12 = formato.format(hoy);
 		System.out.println("La hora (12h): "+hora12);
 		
-		SimpleDateFormat formato24 = new SimpleDateFormat("HH:mm:ss");
-		String hora24 = formato24.format(hoy);
+		formato = new SimpleDateFormat("HH:mm:ss");
+		String hora24 = formato.format(hoy);
 		System.out.println("La hora (24h): "+hora24);
 		
 		SimpleDateFormat letras = new SimpleDateFormat("EEEE, d 'de' MMMM 'de' yyyy");

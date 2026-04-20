@@ -132,11 +132,7 @@ public class Cadena {
 	 * @param newc - caracter a por el que reemplazamos
 	 */
 	public void reemplazar(char c, char newc) {
-		for (int i = 0; i < cadena.length(); i++) {
-			if (cadena.charAt(i) == c) {
-				c = newc;
-			}
-		}
+		this.cadena = cadena.replace(c, newc);
 	}
 
 	/**
@@ -145,13 +141,14 @@ public class Cadena {
 	 * @param c - caracter a eliminar
 	 */
 	public void eliminar(char c) {
-		cadena.toUpperCase();
-		StringBuffer cad = new StringBuffer(cadena);
-		for (int i = 0; i < cadena.length(); i++) {
+		cadena = cadena.toUpperCase();
+		StringBuffer cad = new StringBuffer(this.cadena);
+		for (int i = cadena.length()-1; i >= 0; i--) {
 			if (cadena.charAt(i) == c) {
 				cad.deleteCharAt(i);
 			}
 		}
+		this.cadena = cad.toString();
 	}
 
 }

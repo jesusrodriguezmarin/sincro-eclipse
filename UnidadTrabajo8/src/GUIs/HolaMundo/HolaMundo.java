@@ -1,4 +1,4 @@
-package GUIs;
+package GUIs.HolaMundo;
 
 // Importamos toda la libreria de javax.swing
 import javax.swing.*;

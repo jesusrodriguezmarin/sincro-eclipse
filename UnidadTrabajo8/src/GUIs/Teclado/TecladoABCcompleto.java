@@ -9,7 +9,7 @@ public class TecladoABCcompleto extends JFrame {
 	public TecladoABCcompleto() {
 		setLayout(new GridLayout(3,9,5,5));
 		
-		String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWYZ";
+		String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
 		
 		for (int i = 0; i < abc.length(); i++) {
 			add(new JButton(""+abc.charAt(i)));

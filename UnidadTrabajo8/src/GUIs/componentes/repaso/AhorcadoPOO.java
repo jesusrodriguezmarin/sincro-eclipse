@@ -1,4 +1,4 @@
-package ejercicios;
+package GUIs.componentes.repaso;
 
 public class AhorcadoPOO {
 

@@ -12,7 +12,7 @@ public class LecturaCaracterSinEspacios {
 		// Necesitamos control de excepciones para crear el FileReader
 		try {
 			// Apertura del fichero
-			fr = new FileReader("C:/BD/MiFichero.txt");
+			fr = new FileReader("/Users/jesusrodriguezmarin/Documents/ficherosEclipse/pruebaLectura.txt");
 			
 			// Lectura del fichero
 			int valor = fr.read();

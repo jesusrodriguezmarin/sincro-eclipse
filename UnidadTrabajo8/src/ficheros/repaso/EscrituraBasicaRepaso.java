@@ -15,14 +15,14 @@ public class EscrituraBasicaRepaso {
 		
 		try {
 			// Creamos el archivo
-			fw = new FileWriter("/Users/jesusrodriguezmarin/Documents/ficherosEclipse/PruebaEscritura.txt");
+			fw = new FileWriter("/Users/jesusrodriguezmarin/Documents/ficherosEclipse/Prueba3Escritura.txt");
 			pw = new PrintWriter(fw);
 			
 			// Damos nombre al archivo
-			pw.println("Prueba de Escritura: ");
+			pw.println("Tercera prueba de Escritura: ");
 			
 			for (int i = 1; i <= 10; i++) {
-				pw.println("Línea: "+i);
+				pw.println("Partes: "+i);
 			}
 			
 			

@@ -27,7 +27,7 @@ public class EscrituraTeclado {
 				pw.println(cadena);
 				cadena = sc.nextLine();
 			}
-			System.out.println("Has finalizado la inteoducción de texto.");
+			System.out.println("Has finalizado la introducción de texto.");
 			System.out.println("Abre el archivo para verificar tu texto.");
 			sc.close();
 			

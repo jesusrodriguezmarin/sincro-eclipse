@@ -15,7 +15,7 @@ public class Dictionary {
 		sc.close();
 
 		// 2. Buscamos la palabra en el archivo que tenemos
-		File f = new File("C:/BD/dictionary.txt");
+		File f = new File("/Users/jesusrodriguezmarin/Documents/ficherosEclipse/dictionary.txt");
 
 		// Declaramos una variable para encontrar
 		boolean encontrado = false;
@@ -25,25 +25,39 @@ public class Dictionary {
 			Scanner s = new Scanner(f);
 			String linea;
 
+			// Mientras haya una línea y no se haya encontrado
 			while (s.hasNextLine() && !encontrado) {
+				
+				// Guarda esa línea en una variable
 				linea = s.nextLine();
 
-				// Comprobamos con compareTo que nos da 0 si son iguales o -1 si no lo son
+				// De la línea completa cogemos solo la primera parte desde 0 hasta = sin incluirlo
 				String p1 = linea.substring(0, linea.indexOf('='));
+				
+				// Declaramos variable para asignar la segunda parte de la línea como traduccion
+				String traduccion  = "";
+				
+				// Comprobamos con compareTo, nos da 0 si son iguales o -1 si no lo son
 				if (p1.compareToIgnoreCase(palabra) == 0) {
-					String traduccion = linea.substring(linea.indexOf('=') + 1);
+					
+					// Son iguales, "se traduce" cogiendo la otra parte de la línea
+					traduccion = linea.substring(linea.indexOf('=') + 1);
+					
+					// Validamos encontrado
 					encontrado = true;
 
 					// 3. Indicamos si se ha encontrado la palabra o no
 					System.out.print("Traslation: ");
 
-					if (encontrado) {
+					if (encontrado) 
 						System.out.println(traduccion);
-					} else {
-						System.out.println("Sorry, not found");
-					}
 				}
 			}
+			// Si llega aquí y no se ha encontrado muestra el mensaje
+			if (!encontrado)
+				System.out.println("Sorry, not found");
+			
+			
 			s.close();
 
 		} catch (FileNotFoundException e) {

@@ -1,21 +1,19 @@
 package GUIs.Layout;
 
-import java.awt.FlowLayout;
-
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Ej_FlowLayout extends JFrame {
+public class Ej_BoxLayout extends JFrame {
 
-	public Ej_FlowLayout() {
+	public Ej_BoxLayout() {
 
 		// Alineación a la izquierda, 10px horizontal y vertical
-		setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-		add(new JButton("Boton 1"));
-		add(new JButton("Boton 2"));
-		add(new JButton("Boton 3"));
-
+		add(new JButton("Primero"));
+		add(new JButton("Segundo"));
+		add(new JButton("Tercero"));
 	}
 
 
@@ -23,10 +21,10 @@ public class Ej_FlowLayout extends JFrame {
 	public static void main(String[] args) {
 
 		// Creamos objeto
-		Ej_FlowLayoutArray f = new Ej_FlowLayoutArray();
+		Ej_BoxLayout f = new Ej_BoxLayout();
 
 		f.setTitle("Ejemplo FlowLayout");
-		f.setSize(500, 300);
+		f.setSize(300, 150);
 		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		f.setVisible(true);

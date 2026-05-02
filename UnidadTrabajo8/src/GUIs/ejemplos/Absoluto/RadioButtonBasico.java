@@ -4,7 +4,7 @@ package GUIs.ejemplos.Absoluto;
 import javax.swing.*;
 
 // Añadimos el extends JFrame
-public class Ej02 extends JFrame {
+public class RadioButtonBasico extends JFrame {
 
 	// Botones
 	JRadioButton radio1, radio2;
@@ -13,7 +13,7 @@ public class Ej02 extends JFrame {
 	ButtonGroup grupoBotones;
 	
 	// Creamos la ventana con dos botones
-	public Ej02() {
+	public RadioButtonBasico() {
 		
 		setLayout(null);
 		
@@ -38,7 +38,7 @@ public class Ej02 extends JFrame {
 	public static void main(String[] args) {
 
 		// Cramos objeto
-		Ej02 v = new Ej02();
+		RadioButtonBasico v = new RadioButtonBasico();
 		
 		v.setTitle("Edad");
 		v.setBounds(10, 10, 330, 150);

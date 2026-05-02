@@ -2,16 +2,16 @@ package GUIs.ejemplos.Absoluto;
 
 import javax.swing.*;
 
-public class Ej05 extends JFrame {
+public class ComboBoxBasico extends JFrame {
 
 	// Componentes
-	JComboBox combo;
+	JComboBox<String> combo;
 	JLabel mensaje;
 	JLabel mensaje1;
 	JTextField campotexto;
 
 	// Creamos ventana
-	public Ej05() {
+	public ComboBoxBasico() {
 		setLayout(null);
 
 		// Creamos una etiqueta
@@ -36,7 +36,7 @@ public class Ej05 extends JFrame {
 		add(mensaje1);
 
 		// Creamos el combo y sus items y añadimos
-		combo = new JComboBox();
+		combo = new JComboBox<String>();
 		combo.setBounds(10, 105, 120, 20);
 		combo.addItem("España");
 		combo.addItem("Francia");
@@ -49,7 +49,7 @@ public class Ej05 extends JFrame {
 	public static void main(String[] args) {
 
 		// Creamos objeto
-		Ej05 v = new Ej05();
+		ComboBoxBasico v = new ComboBoxBasico();
 
 		// Configuramos
 		v.setSize(350, 400);

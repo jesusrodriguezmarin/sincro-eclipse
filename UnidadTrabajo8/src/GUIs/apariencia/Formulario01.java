@@ -15,7 +15,7 @@ public class Formulario01 extends JFrame {
 		add(new JTextField(""));
 		add(new JLabel("Indica tu pais de origen: ", JLabel.RIGHT));
 		String[] paises = {null, "España", "Francia", "Italia", "Dinamarca"};
-		add(new JComboBox(paises));
+		add(new JComboBox<String>(paises));
 		add(new JCheckBox("Acepto condiciones de uso"));
 		add(new JButton("Aceptar"));
 	}

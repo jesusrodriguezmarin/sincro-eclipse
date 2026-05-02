@@ -1,4 +1,4 @@
-package GUIs.componentes.repaso;
+package GUIs.repasoCasa;
 
 public class AhorcadoPOO {
 

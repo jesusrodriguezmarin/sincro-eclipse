@@ -1,4 +1,4 @@
-package GUIs.componentes.repaso;
+package GUIs.repasoCasa;
 
 import java.awt.Color;
 import java.awt.FlowLayout;

@@ -2,7 +2,7 @@ package GUIs.ejemplos.Absoluto;
 
 import javax.swing.*;
 
-public class Ej03 extends JFrame {
+public class TexrAreaBasico extends JFrame {
 
 	// Componentes
 	JTextArea area;
@@ -10,7 +10,7 @@ public class Ej03 extends JFrame {
 	JLabel etiqueta;
 
 	// Creamos una ventana con un JTextArea y un JScrollPane
-	public Ej03() {
+	public TexrAreaBasico() {
 		
 		setLayout(null);
 		
@@ -29,7 +29,7 @@ public class Ej03 extends JFrame {
 	public static void main(String[] args) {
 
 		// Creamos el objeto
-		Ej03 s = new Ej03();
+		TexrAreaBasico s = new TexrAreaBasico();
 		
 		
 		s.setDefaultCloseOperation(EXIT_ON_CLOSE);

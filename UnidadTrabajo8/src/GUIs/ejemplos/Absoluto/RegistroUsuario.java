@@ -2,7 +2,7 @@ package GUIs.ejemplos.Absoluto;
 
 import javax.swing.*;
 
-public class Ej04 extends JFrame {
+public class RegistroUsuario extends JFrame {
 
 	/**
 	 * Componentes
@@ -18,7 +18,7 @@ public class Ej04 extends JFrame {
 	/**
 	 * Constructor de la ventana con: Una etiqueta Un campo de texto
 	 */
-	public Ej04() {
+	public RegistroUsuario() {
 
 		setLayout(null);
 
@@ -69,7 +69,7 @@ public class Ej04 extends JFrame {
 	 */
 	public static void main(String[] args) {
 
-		Ej04 v = new Ej04();
+		RegistroUsuario v = new RegistroUsuario();
 
 		// Configuramos la ventana: damos titulo, ubicación, tamaño...
 		v.setTitle("Acceso");

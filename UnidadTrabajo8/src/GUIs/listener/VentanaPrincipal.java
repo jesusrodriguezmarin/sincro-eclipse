@@ -1,5 +1,6 @@
 package GUIs.listener;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -28,6 +29,12 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		// Boton
 		boton = new JButton("Haz click aquí");
 		boton.setBounds(40, 80, WIDTH, HEIGHT);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public static void main(String[] args) {

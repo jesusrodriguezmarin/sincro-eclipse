@@ -5,14 +5,14 @@ import javax.swing.*;
 public class Ej_ComboBox extends JFrame {
 
 	// Componentes
-	JComboBox combo;
+	private JComboBox<String> combo;
 	
 	// Creamos ventana
 	public Ej_ComboBox() {
 		setLayout(null);
 		
 		// Creamos el combo y sus items y añadimos
-		combo = new JComboBox();
+		combo = new JComboBox<String>();
 		combo.setBounds(10, 10, 120, 20);
 		combo.addItem("Azul");
 		combo.addItem("Rojo");

@@ -19,7 +19,7 @@ public class TecladoABC extends JFrame {
 
 		TecladoABC g = new TecladoABC();
 		g.setTitle("Ejemplo Teclado");
-		g.setSize(300, 500);
+		g.setSize(800, 400);
 		g.setLocationRelativeTo(null);
 		g.setVisible(true);
 		g.setDefaultCloseOperation(EXIT_ON_CLOSE);

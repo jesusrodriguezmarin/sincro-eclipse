@@ -40,12 +40,20 @@ public class SumarTextFieldCadenaVacia extends JFrame implements ActionListener 
 	 * Método que implementa la acción del botón
 	 */
 	public void actionPerformed(ActionEvent e) {
+		
+		// Control de errores
 		try {
 			if (e.getSource() == boton) {
+				
+				// Capturamos los textos
 				String cad1 = sumando1.getText();
 				String cad2 = sumando2.getText();
+				
+				// Variables para el parseo y posterior operación
 				int x1;
 				int x2;
+				
+				// Parseamos controlando antes si no se ha introducido texto
 				if (cad1.equals("")) {
 					x1 = 0;
 					x2 = Integer.parseInt(cad2);
@@ -65,6 +73,7 @@ public class SumarTextFieldCadenaVacia extends JFrame implements ActionListener 
 
 	// Programa principal
 	public static void main(String[] args) {
+		
 		// Creamos objeto
 		SumarTextFieldCadenaVacia s = new SumarTextFieldCadenaVacia();
 		s.setSize(250, 200);

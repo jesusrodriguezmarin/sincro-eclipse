@@ -26,7 +26,7 @@ public class TextFieldButtonTitle extends JFrame implements ActionListener {
 		etiqueta.setBounds(50, 30, 100, 25);
 		add(etiqueta);
 		
-		// Campo de texto para recibir el primer sumando
+		// Campo de texto para recibir el nombre
 		nombre = new JTextField();
 		nombre.setBounds(120, 30, 250, 25);
 		add(nombre);
@@ -38,6 +38,9 @@ public class TextFieldButtonTitle extends JFrame implements ActionListener {
 		boton.addActionListener(this);
 	}
 	
+	/**
+	 * Establece el texto introducido como título en la barra superior
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==boton) {

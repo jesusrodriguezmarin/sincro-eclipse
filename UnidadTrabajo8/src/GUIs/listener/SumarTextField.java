@@ -17,6 +17,8 @@ public class SumarTextField extends JFrame implements ActionListener {
 	 * Constructor
 	 */
 	public SumarTextField() {
+		
+		// Posicionamiento
 		setLayout(null);
 
 		// Campo de texto para recibir el primer sumando
@@ -40,13 +42,23 @@ public class SumarTextField extends JFrame implements ActionListener {
 	 * Método que implementa la acción del botón
 	 */
 	public void actionPerformed(ActionEvent e) {
+		
+		// Control de errores
 		try {
 			if (e.getSource() == boton) {
+				
+				// Capaturamos el texto de ambos campos
 				String cad1 = sumando1.getText();
 				String cad2 = sumando2.getText();
+				
+				// Parseamos el texto String a int para operar
 				int x1 = Integer.parseInt(cad1);
 				int x2 = Integer.parseInt(cad2);
+				
+				// Operamos y guardamos en una variable de texto
 				String total = String.valueOf(x1 + x2);
+				
+				// Mostramos el resultado en la barra superior
 				setTitle(total);
 			}
 		} catch (Exception e2) {
@@ -56,6 +68,7 @@ public class SumarTextField extends JFrame implements ActionListener {
 
 	// Programa principal
 	public static void main(String[] args) {
+		
 		// Creamos objeto
 		SumarTextField s = new SumarTextField();
 		s.setSize(250, 200);

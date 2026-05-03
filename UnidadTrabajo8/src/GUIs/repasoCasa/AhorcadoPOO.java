@@ -3,7 +3,7 @@ package GUIs.repasoCasa;
 public class AhorcadoPOO {
 
 	// -- CONSTANTES
-	public final int TOTAL_INTENTOS = 10;
+	public final int TOTAL_INTENTOS = 4;
 
 	// -- ATRIBUTOS (Los atributos no se inicializan)
 	private int intentos;
@@ -105,24 +105,25 @@ public class AhorcadoPOO {
 	public boolean intentar(char letra) {
 		// Sumamos un intento
 		intentos++;
-		
-		// Çonvertimos la letra del parámetro a mayúscula para encajar con las palabras del programa
+
+		// Çonvertimos la letra del parámetro a mayúscula para encajar con las palabras
+		// del programa
 		letra = Character.toUpperCase(letra);
-		
+
 		// Comprobamos si la letra del parámetro existe en la palabra
 		if (acertar.indexOf(letra) != -1) {
-			
+
 			// Construimos la palabra a mostrar con substring
 			for (int i = 0; i < acertar.length(); i++) {
 				if (acertar.charAt(i) == letra) {
 					palabraMostrar = palabraMostrar.substring(0, i) + letra + palabraMostrar.substring(i + 1);
 				}
 			}
-			
+
 			// Comparamos para comprobar si se ha acertado tras el cambio
 			if (acertar.equals(palabraMostrar))
 				acertada = true;
-			
+
 			// Devolvemos true si la letra está en la palabra
 			return true;
 		}
@@ -132,26 +133,27 @@ public class AhorcadoPOO {
 
 	/**
 	 * Función que compara una palabra introducida con la palabra a acertar
+	 * 
 	 * @param palabra a comparar
 	 * @return true si la palabra coincide, false sino coincide
 	 */
 	public boolean resolver(String palabra) {
-		// Contamos el intento
-		intentos++;
-		
+
 		// Si acertar y palabra son iguales, victoria
 		if (this.acertar.equalsIgnoreCase(palabra)) {
-			
+
 			// Mostrar toma acertar
 			this.palabraMostrar = this.acertar;
-			
+
 			// Acertada toma true
 			this.acertada = true;
-			
+
 			// Si llega aquí devuelve true
 			return true;
 		}
 		// Sino es igual devuelve false
+		// Contamos el intento
+		intentos++;
 		return false;
 	}
 

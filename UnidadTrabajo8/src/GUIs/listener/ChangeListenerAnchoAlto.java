@@ -18,6 +18,7 @@ public class ChangeListenerAnchoAlto extends JFrame implements ChangeListener {
 	 * Creamos la ventana con los tres botones con JRadioButton
 	 */
 	public ChangeListenerAnchoAlto() {
+		
 		// Posicionamiento absoluto
 		setLayout(null);
 		
@@ -44,16 +45,24 @@ public class ChangeListenerAnchoAlto extends JFrame implements ChangeListener {
 		radio3.addChangeListener(this);
 	}
 	
+	/**
+	 * Establece el tamaño de la ventana y la centra
+	 */
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		if (radio1.isSelected()) {
+			// Establece el tamaño de la ventana
 			setSize(640,480);
+			// La posiciona al centro
+			setLocationRelativeTo(null);
 		}
 		if (radio2.isSelected()) {
 			setSize(800,600);
+			setLocationRelativeTo(null);
 		}
 		if (radio3.isSelected()) {
 			setSize(1024,780);
+			setLocationRelativeTo(null);
 		}
 		
 	}
@@ -63,6 +72,7 @@ public class ChangeListenerAnchoAlto extends JFrame implements ChangeListener {
 		ChangeListenerAnchoAlto v = new ChangeListenerAnchoAlto();
 		v.setTitle("Elige una resolución: ");
 		v.setBounds(0, 0, 300, 250);
+		v.setLocationRelativeTo(null);
 		v.setVisible(true);
 		v.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

@@ -10,10 +10,13 @@ import javax.swing.JFrame;
 public class ItemListenerColores extends JFrame implements ItemListener {
 
 	/**
-	 * Componentes
+	 * Componentes declaración
 	 */
 	private JComboBox<String> combo;
 	
+	/**
+	 * Constructor inicialización
+	 */
 	public ItemListenerColores() {
 		
 		// Posicionamiento absoluto

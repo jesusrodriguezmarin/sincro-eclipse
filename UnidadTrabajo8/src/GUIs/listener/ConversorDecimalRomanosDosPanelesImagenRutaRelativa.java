@@ -1,5 +1,6 @@
 package GUIs.listener;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -7,7 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class ConversorDecimalRomanosDosPaneles extends JFrame implements ActionListener {
+public class ConversorDecimalRomanosDosPanelesImagenRutaRelativa extends JFrame implements ActionListener {
 
 	/**
 	 * Declaración de componentes de la ventana
@@ -19,22 +20,28 @@ public class ConversorDecimalRomanosDosPaneles extends JFrame implements ActionL
 	/**
 	 * Constructor
 	 */
-	public ConversorDecimalRomanosDosPaneles() {
+	public ConversorDecimalRomanosDosPanelesImagenRutaRelativa() {
+		
+		// Inicializamos el panel 1
 		panel1 = new JPanel();
 		panel1.setLayout(new GridLayout(0, 1, 0, 10));
 		panel1.add(new JLabel("Nº decimal", JLabel.CENTER));
 		campo1 = new JTextField(10);
+		campo1.addActionListener(this);
 		panel1.add(campo1);
 		
+		// Inicializamos el panel 2
 		panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(0, 1, 0, 10));
 		panel2.add(new JLabel("Nº romano", JLabel.CENTER));
 		campo2 = new JTextField(10);
+		campo2.setEditable(false);
+		campo2.setBackground(Color.LIGHT_GRAY);
 		panel2.add(campo2);
 		
 	
 		// Añadimos el botón
-		boton = new JButton(new ImageIcon("C:/proyectos/flecha.png"));
+		boton = new JButton(new ImageIcon(getClass().getResource("flecha.png")));
 		boton.setContentAreaFilled(false);
 		boton.setBorder(null);
 		boton.addActionListener(this);
@@ -128,7 +135,7 @@ public class ConversorDecimalRomanosDosPaneles extends JFrame implements ActionL
 			
 	public static void main(String[] args) {
 		// Creamos la clase
-		ConversorDecimalRomanosDosPaneles c = new ConversorDecimalRomanosDosPaneles();
+		ConversorDecimalRomanosDosPanelesImagenRutaRelativa c = new ConversorDecimalRomanosDosPanelesImagenRutaRelativa();
 		c.setTitle("Conversor Decimal > Romano");
 		c.pack();
 		c.setLocationRelativeTo(null);

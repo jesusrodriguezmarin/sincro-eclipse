@@ -1,24 +1,21 @@
 package GUIs.repasoCasa;
 
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
 
 public class CifradoVentanaPrincipalEmergente extends JFrame implements ActionListener {
 
 	/**
 	 * Componentes
 	 */
-	private JPanel panel1, panel2, panel3, panel4;
+	private JPanel panel1, panel2;
 	private JRadioButton radio1, radio2, radio3;
 	private ButtonGroup grupoBotones;
 	private JButton cifrar, borrar;
-	private JLabel label1, label2, label3, label4;
 	private JTextField campo1, campo2;
 
 	/**
@@ -28,64 +25,49 @@ public class CifradoVentanaPrincipalEmergente extends JFrame implements ActionLi
 
 		setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
 
-		// Creamos grupo de botones
+		// Creamos los radio botones
+		radio1 = new JRadioButton("Cifrado CESAR3");
+		radio2 = new JRadioButton("Cifrado ROT13");
+		radio3 = new JRadioButton("Cifrado RIEL");
+
+		// Creamos los botones
+		cifrar = new JButton("Cifrar");
+		borrar = new JButton("Borrar");
+
+		// Añadimos el grupo
 		grupoBotones = new ButtonGroup();
 		grupoBotones.add(radio1);
 		grupoBotones.add(radio2);
 		grupoBotones.add(radio3);
 
-		// Configuramos los paneles
-		panel1 = new JPanel();
-		panel1.setLayout(new GridLayout(0, 1, 0, 30));
-		add(panel1);
-
-		// Creamos una etiqueta
-		label1 = new JLabel("Elige una opción de cifrado: ");
-		panel1.add(label1);
-
-		panel2 = new JPanel();
-		panel2.setLayout(new GridLayout(0, 1, 0, 30));
-		add(panel2);
-
-		label2 = new JLabel("Texto original: ");
-		panel2.add(label2);
-
-		campo1 = new JTextField();
-		panel2.add(campo1);
-
-		label3 = new JLabel("Texto cifrado: ");
-		panel2.add(label3);
-
-		campo2 = new JTextField();
-		panel2.add(campo2);
-
-		panel3 = new JPanel();
-		panel3.setLayout(new GridLayout(1, 0, 0, 30));
-		add(panel3);
-
-		panel4 = new JPanel();
-		panel4.setLayout(new BorderLayout());
-		add(panel4);
-
-		// Creamos los radio
-		radio1 = new JRadioButton("Crifrado del cesar");
+		// Creamos el panel 1
+		panel1 = new JPanel(new GridLayout(0, 1, 0, 10));
+		panel1.add(new JLabel("Elige una opción: "));
 		panel1.add(radio1);
-		radio1.addActionListener(this);
-
-		radio2 = new JRadioButton("Crifrado del cesar");
 		panel1.add(radio2);
-		radio2.addActionListener(this);
-
-		radio3 = new JRadioButton("Crifrado del cesar");
 		panel1.add(radio3);
-		radio3.addActionListener(this);
-
-		// Creamos los botones
-		cifrar = new JButton("Cifrar");
 		panel1.add(cifrar);
 
-		borrar = new JButton("Borrar");
+		// Creamos el panel 2
+		panel2 = new JPanel(new GridLayout(0, 1, 0, 10));
+		campo1 = new JTextField(15);
+		campo2 = new JTextField(15);
+		campo2.setEditable(false);
+
+		panel2.add(new JLabel("Texto original:"));
+		panel2.add(campo1);
+		panel2.add(new JLabel("Texto cifrado:"));
+		panel2.add(campo2);
 		panel2.add(borrar);
+
+		// Acitvamos los listeners para los botones
+		cifrar.addActionListener(this);
+		borrar.addActionListener(this);
+
+		// Añadimos los paneles
+		add(panel1);
+		add(panel2);
+
 	}
 
 	// Constantes para las claves de sustitución (Cesar3 y Rot13)
@@ -162,26 +144,28 @@ public class CifradoVentanaPrincipalEmergente extends JFrame implements ActionLi
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == cifrar) {
-			if (campo1.getText().isEmpty())
-				JOptionPane.showMessageDialog(null, "Debes utilizar un txto claro", "AVISO",
+
+			if (campo1.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Debes utilizar un texto claro", "AVISO",
 						JOptionPane.WARNING_MESSAGE);
-			else if (!radio1.isSelected() && !radio2.isSelected() && !radio3.isSelected())
-				JOptionPane.showMessageDialog(null, "Debes elegir una opción", "AVISO",
-						JOptionPane.WARNING_MESSAGE);
-			else { 
+			} else if (!radio1.isSelected() && !radio2.isSelected() && !radio3.isSelected()) {
+				JOptionPane.showMessageDialog(null, "Debes elegir una opción", "AVISO", JOptionPane.WARNING_MESSAGE);
+			} else {
+				// CAMBIAMOS campo1 por campo2 para ver el resultado en la segunda caja
 				if (radio1.isSelected())
-					campo1.setText(sustitucion(campo1.getText(), CESAR));
+					campo2.setText(sustitucion(campo1.getText(), CESAR));
 				if (radio2.isSelected())
-					campo1.setText(sustitucion(campo1.getText(), ROT13));
+					campo2.setText(sustitucion(campo1.getText(), ROT13));
 				if (radio3.isSelected())
-					campo1.setText(riel(campo1.getText()));
+					campo2.setText(riel(campo1.getText()));
 			}
-			
-			// Botón borrar
-			if (e.getSource() == borrar) {
-				campo2.setText("");
-				campo1.setText("");
-			}
+		}
+
+		// Botón borrar
+		if (e.getSource() == borrar) {
+			campo2.setText("");
+			campo1.setText("");
+			grupoBotones.clearSelection(); // Desmarca los radio buttons
 		}
 	}
 

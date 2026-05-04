@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class Ventana_EmergentePositivNegativo extends JFrame implements ActionListener {
+public class Ventana_EmergenteMensajesTodos extends JFrame implements ActionListener {
 
 	/**
 	 * Componentes
@@ -20,7 +20,7 @@ public class Ventana_EmergentePositivNegativo extends JFrame implements ActionLi
 	/**
 	 * Constructor
 	 */
-	public Ventana_EmergentePositivNegativo () {
+	public Ventana_EmergenteMensajesTodos () {
 		
 		// Creamos los componentes de la ventana
 		label = new JLabel("Introduce un valor entero: ");
@@ -74,7 +74,7 @@ public class Ventana_EmergentePositivNegativo extends JFrame implements ActionLi
 	public static void main(String[] args) {
 
 		// Instanciamos y configuramos
-		Ventana_EmergentePositivNegativo v = new Ventana_EmergentePositivNegativo();
+		Ventana_EmergenteMensajesTodos v = new Ventana_EmergenteMensajesTodos();
 		v.setTitle("Positivo-Negativo");
 		v.pack();
 		v.setLocationRelativeTo(null);

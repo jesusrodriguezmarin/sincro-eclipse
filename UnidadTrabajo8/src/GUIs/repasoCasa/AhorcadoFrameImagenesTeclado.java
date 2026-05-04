@@ -27,7 +27,7 @@ public class AhorcadoFrameImagenesTeclado extends JFrame implements ActionListen
 		}
 
 		// 2. CONFIGURACIÓN VENTANA
-		setTitle("Ahorcado - Teclado al Sur");
+		setTitle("Ahorcado");
 		setSize(550, 850); 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);

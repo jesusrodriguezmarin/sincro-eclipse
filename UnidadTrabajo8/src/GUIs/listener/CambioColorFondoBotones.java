@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CambioColor extends JFrame implements ActionListener {
+public class CambioColorFondoBotones extends JFrame implements ActionListener {
 	
 	/*
 	 * Componentes
@@ -17,7 +17,7 @@ public class CambioColor extends JFrame implements ActionListener {
 	 * Constructor
 	 * Inicializa cada botón a un color
 	 */
-	public CambioColor() {
+	public CambioColorFondoBotones() {
 		
 		// Posicionamiento absoluto
 		setLayout(null);
@@ -71,7 +71,7 @@ public class CambioColor extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 		
 		// Creamos una instancia de la clase
-		CambioColor v = new CambioColor();
+		CambioColorFondoBotones v = new CambioColorFondoBotones();
 		v.setTitle("Colores");
 		v.setSize(280, 200);
 		v.setLocationRelativeTo(null);

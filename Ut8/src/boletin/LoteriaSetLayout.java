@@ -13,9 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 
-public class Loteria extends JFrame implements ActionListener {
+public class LoteriaSetLayout extends JFrame implements ActionListener {
 
 	/**
 	 * Declaración de los componentes
@@ -35,7 +34,7 @@ public class Loteria extends JFrame implements ActionListener {
 	/**
 	 * Constructor
 	 */
-	public Loteria() {
+	public LoteriaSetLayout() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 
@@ -248,7 +247,8 @@ public class Loteria extends JFrame implements ActionListener {
 		}
 
 		if (e.getSource() == mntmNewMenuItem) {
-			JOptionPane.showMessageDialog(null, "Generador de números de LA LOTERÍA PRIMITIVA", "Examen de Programación", JOptionPane.PLAIN_MESSAGE);
+			JDialogInfo j = new JDialogInfo(this);
+			j.setVisible(true);
 		}
 
 		if (e.getSource() == mntmNewMenuItem_1) {
@@ -264,9 +264,8 @@ public class Loteria extends JFrame implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Loteria frame = new Loteria();
+					LoteriaSetLayout frame = new LoteriaSetLayout();
 					frame.setTitle("Lotería Primitiva");
-					frame.setResizable(false);
 					frame.setLocationRelativeTo(null);
 					frame.setVisible(true);
 				} catch (Exception e) {

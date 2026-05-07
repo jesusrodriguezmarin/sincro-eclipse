@@ -9,7 +9,7 @@ public class Ej_FlowLayoutArray extends JFrame {
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20));
 		
-		for (int i = 0; i <= 10; i++) {
+		for (int i = 1; i <= 10; i++) {
 			add(new JButton("Botón "+i));
 		}
 	}

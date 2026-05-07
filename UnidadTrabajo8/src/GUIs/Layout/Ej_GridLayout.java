@@ -28,7 +28,7 @@ public class Ej_GridLayout extends JFrame {
 		// Creamos objeto
 		Ej_GridLayout f = new Ej_GridLayout();
 
-		f.setTitle("Ejemplo FlowLayout");
+		f.setTitle("Ejemplo GridLayout");
 		f.setSize(500, 300);
 		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);

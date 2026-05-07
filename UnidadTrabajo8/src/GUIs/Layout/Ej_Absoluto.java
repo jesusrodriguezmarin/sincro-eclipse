@@ -11,14 +11,19 @@ public class Ej_Absoluto extends JFrame {
 		setLayout(null);
 		
 		// Creamos boton
-		JButton b = new JButton("Soy libre");
+		JButton b = new JButton("125x75");
 		
 		// Establecemos medidas
 		// x , y, ancho, algo
-		b.setBounds(200, 60, 100, 50);
+		b.setBounds(100, 50, 125, 75);
+		
+		JButton c = new JButton("100x50");
+		c.setBounds(300,100,100,50);
+		
 		
 		// Añadimos
 		add(b);
+		add(c);
 
 	}
 
@@ -29,7 +34,7 @@ public class Ej_Absoluto extends JFrame {
 		// Creamos objeto
 		Ej_Absoluto f = new Ej_Absoluto();
 
-		f.setTitle("Ejemplo FlowLayout");
+		f.setTitle("Ejemplo Absoluto");
 		f.setSize(500, 200);
 		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);

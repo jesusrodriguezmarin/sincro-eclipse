@@ -4,18 +4,15 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Ej_BorderLayout extends JFrame {
+public class Ej_BorderLayoutUnSoloBoton extends JFrame {
 
-	public Ej_BorderLayout() {
+	public Ej_BorderLayoutUnSoloBoton() {
 
 		// Alineación a la izquierda, 10px horizontal y vertical
 		setLayout(new BorderLayout());
 
-		add(new JButton("Norte"), BorderLayout.NORTH);
-		add(new JButton("Sur"), BorderLayout.SOUTH);
-		add(new JButton("Este"), BorderLayout.EAST);
-		add(new JButton("Oeste"), BorderLayout.WEST);
 		add(new JButton("Centro"), BorderLayout.CENTER);
+		
 
 
 	}
@@ -25,7 +22,7 @@ public class Ej_BorderLayout extends JFrame {
 	public static void main(String[] args) {
 
 		// Creamos objeto
-		Ej_BorderLayout f = new Ej_BorderLayout();
+		Ej_BorderLayoutUnSoloBoton f = new Ej_BorderLayoutUnSoloBoton();
 
 		f.setTitle("Ejemplo BorderLayout");
 		f.setSize(500, 300);

@@ -1,4 +1,4 @@
-package GUIs.repasoCasa;
+package GUIs.repasoGeneral;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

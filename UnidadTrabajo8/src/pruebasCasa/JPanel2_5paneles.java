@@ -1,30 +1,35 @@
 package pruebasCasa;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.PrintWriter;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-public class JPanel2_5paneles extends JFrame {
+public class JPanel2_5paneles extends JFrame implements ActionListener {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel izquierdo, derecho, iNorte, iSur, dNorte, dCentro, dSur;
 	private JLabel nombre, apellido1, apellido2, edad, comentarios;
 	private JTextField tnombre, tapellido1, tapellido2, tedad;
 	private JTextArea area;
-	private JButton enviar, borrar, entrar, salir;
+	private JScrollPane scrollArea;
+	private JButton enviar, borrar, salir;
 	
 	public JPanel2_5paneles() {
 		
-		// Un margen general para que los componentes no toquen los bordes de la ventana
-		((JPanel)getContentPane()).setBorder(new EmptyBorder(10, 10, 10, 10));
-		setLayout(new GridLayout(1, 2, 10, 10));
+		// 1. Configuración de la ventana y margen general
+		((JPanel)getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
+		setLayout(new GridLayout(1, 2, 15, 15));
 		
-		// --- PANEL IZQUIERDO ---
-		izquierdo = new JPanel(new BorderLayout(5, 5));
+		// --- PANEL IZQUIERDO (Datos) ---
+		izquierdo = new JPanel(new BorderLayout(5, 10));
 		
-		// iNorte: Cambiamos a (8, 1) para asegurar una sola columna
-		iNorte = new JPanel(new GridLayout(8, 1, 5, 5));
-		iNorte.setBorder(new TitledBorder("Datos Personales")); // Queda muy profesional
+		iNorte = new JPanel(new GridLayout(8, 1, 2, 2));
+		iNorte.setBorder(new TitledBorder("Datos Personales"));
 		
 		iNorte.add(new JLabel("Nombre:"));
 		tnombre = new JTextField();
@@ -44,47 +49,100 @@ public class JPanel2_5paneles extends JFrame {
 		
 		izquierdo.add(iNorte, BorderLayout.CENTER);
 		
-		// iSur: Panel para el botón enviar
-		iSur = new JPanel(new FlowLayout(FlowLayout.RIGHT)); // Botón a la derecha
-		enviar = new JButton("ENVIAR DATOS");
+		iSur = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		enviar = new JButton("ENVIAR");
 		iSur.add(enviar);
 		izquierdo.add(iSur, BorderLayout.SOUTH);
 
-		// --- PANEL DERECHO ---
+		// --- PANEL DERECHO (Comentarios y acciones) ---
 		derecho = new JPanel(new BorderLayout(5, 10));
 		
-		// dNorte: Para el área de comentarios
-		dNorte = new JPanel(new BorderLayout(5, 5));
-		dNorte.add(new JLabel("Comentarios:"), BorderLayout.NORTH);
+		dNorte = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		comentarios = new JLabel("Comentarios:");
+		dNorte.add(comentarios);
+		derecho.add(dNorte, BorderLayout.NORTH);
 		
 		area = new JTextArea();
-		area.setLineWrap(true); // Para que el texto salte de línea solo
-		// IMPORTANTE: El JTextArea siempre debe ir dentro de un JScrollPane
-		JScrollPane scrollArea = new JScrollPane(area);
-		dNorte.add(scrollArea, BorderLayout.CENTER);
-		
-		derecho.add(dNorte, BorderLayout.CENTER);
+		area.setLineWrap(true);
+		area.setWrapStyleWord(true); 
+		scrollArea = new JScrollPane(area);
+		derecho.add(scrollArea, BorderLayout.CENTER); 
 
-		// Panel para botones del lado derecho (Centro y Sur)
-		JPanel panelBotonesDerecha = new JPanel(new GridLayout(2, 1, 5, 5));
+		JPanel panelInferiorDerecho = new JPanel(new GridLayout(2, 1, 5, 5));
 		
-		borrar = new JButton("BORRAR FORMULARIO");
-		panelBotonesDerecha.add(borrar);
+		dCentro = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		borrar = new JButton("BORRAR");
+		dCentro.add(borrar);
 		
-		salir = new JButton("SALIR DEL PROGRAMA");
-		panelBotonesDerecha.add(salir);
+		dSur = new JPanel(new FlowLayout(FlowLayout.CENTER));
+		salir = new JButton("SALIR");
+		dSur.add(salir);
 		
-		derecho.add(panelBotonesDerecha, BorderLayout.SOUTH);
+		panelInferiorDerecho.add(dCentro);
+		panelInferiorDerecho.add(dSur);
 		
-		// Añadimos los troncales al Frame
+		derecho.add(panelInferiorDerecho, BorderLayout.SOUTH);
+		
 		add(izquierdo);
 		add(derecho);
+		
+		// Listeners
+		borrar.addActionListener(this);
+		enviar.addActionListener(this);
+		salir.addActionListener(this);
 	}
 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if (e.getSource() == borrar) {
+			JOptionPane.showMessageDialog(this, "Datos eliminados", "BORRAR", JOptionPane.WARNING_MESSAGE);
+			tnombre.setText("");
+			tapellido1.setText("");
+			tapellido2.setText("");
+			tedad.setText("");
+			area.setText("");
+			
+		} else if (e.getSource() == salir) {
+			System.exit(0);
+			
+		} else if (e.getSource() == enviar) {
+			if (tnombre.getText().trim().isEmpty()) {
+				JOptionPane.showMessageDialog(this, "El nombre es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			PrintWriter escritor = null;
+			try {
+				escritor = new PrintWriter("registro_" + tnombre.getText() + ".txt");
+				
+				escritor.println("--- REGISTRO USUARIO ---");
+				escritor.println("Nombre: " + tnombre.getText());
+				// IMPORTANTE: Añadido .getText() a los campos de apellido
+				escritor.println("Apellidos: " + tapellido1.getText() + " " + tapellido2.getText());
+				escritor.println("Edad: " + tedad.getText());
+				escritor.println("-------------------------");
+				escritor.println("Comentarios: ");
+				escritor.println(area.getText());
+				
+				escritor.flush(); // Asegura que todo se escriba al disco
+				JOptionPane.showMessageDialog(this, "Archivo guardado con éxito.", "ÉXITO", JOptionPane.INFORMATION_MESSAGE);
+				
+			} catch (Exception e2) {
+				JOptionPane.showMessageDialog(this, "Error: " + e2.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+			} finally {
+				// El cierre debe estar aquí, dentro del bloque del botón enviar
+				if (escritor != null) {
+					escritor.close();
+				}
+			}
+		}
+	}
+	
 	public static void main(String[] args) {
 		JPanel2_5paneles p = new JPanel2_5paneles();
 		p.setTitle("REGISTRO DE USUARIOS");
-		p.setSize(800, 500); // Tamaño algo más ajustado
+		p.setSize(750, 500);
 		p.setLocationRelativeTo(null);
 		p.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		p.setVisible(true);

@@ -13,7 +13,7 @@ public class JPanel2_5paneles extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel izquierdo, derecho, iNorte, iSur, dNorte, dCentro, dSur;
-	private JLabel nombre, apellido1, apellido2, edad, comentarios;
+	private JLabel comentarios;
 	private JTextField tnombre, tapellido1, tapellido2, tedad;
 	private JTextArea area;
 	private JScrollPane scrollArea;

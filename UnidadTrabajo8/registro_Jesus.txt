@@ -1,7 +1,0 @@
---- REGISTRO USUARIO ---
-Nombre: Jesus
-Apellidos: Rodriguez Marin
-Edad: 36
--------------------------
-Comentarios: 
-ouh yeah

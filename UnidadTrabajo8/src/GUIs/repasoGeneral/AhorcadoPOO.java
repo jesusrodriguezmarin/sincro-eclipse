@@ -3,7 +3,7 @@ package GUIs.repasoGeneral;
 public class AhorcadoPOO {
 
 	// -- CONSTANTES
-	public final int TOTAL_INTENTOS = 4;
+	public final int TOTAL_INTENTOS = 6;
 
 	// -- ATRIBUTOS (Los atributos no se inicializan)
 	private int intentos;
@@ -32,7 +32,7 @@ public class AhorcadoPOO {
 	 * @return
 	 */
 	private String generarPalabraAcertar() {
-		String array[] = { "PIZARRA", "DROMEDARIO", "AJO", "MOCO" };
+		String array[] = { "PIZARRA", "DROMEDARIO", "AJO", "MOZO" };
 		return array[(int) (Math.random() * array.length)];
 	}
 

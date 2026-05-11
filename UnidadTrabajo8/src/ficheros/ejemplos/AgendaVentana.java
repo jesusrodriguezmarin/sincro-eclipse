@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class Agenda {
+public class AgendaVentana {
 
 	// Constante para albergar el fichero
 	final static String FICHERO = "/Users/jesusrodriguezmarin/Documents/ficherosEclipse/MiAgenda.txt";

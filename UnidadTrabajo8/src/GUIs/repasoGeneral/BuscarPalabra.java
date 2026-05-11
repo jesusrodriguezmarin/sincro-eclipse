@@ -1,4 +1,4 @@
-package GUIs.listener;
+package GUIs.repasoGeneral;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class ActionListenerBuscarPalabra extends JFrame implements ActionListener {
+public class BuscarPalabra extends JFrame implements ActionListener {
 
 	/**
 	 * Componentes
@@ -26,7 +26,7 @@ public class ActionListenerBuscarPalabra extends JFrame implements ActionListene
 	 * Constructor
 	 * Inicialización de todos los componentes declarados para este Frame
 	 */
-	public ActionListenerBuscarPalabra() {
+	public BuscarPalabra() {
 		// Posicionamiento absoluto
 		setLayout(null);
 
@@ -93,7 +93,7 @@ public class ActionListenerBuscarPalabra extends JFrame implements ActionListene
 	public static void main(String[] args) {
 
 		// Creamos una instancia de buscar palabra
-		ActionListenerBuscarPalabra b = new ActionListenerBuscarPalabra();
+		BuscarPalabra b = new BuscarPalabra();
 		
 		// Configuramos
 		b.setTitle("Buscador");

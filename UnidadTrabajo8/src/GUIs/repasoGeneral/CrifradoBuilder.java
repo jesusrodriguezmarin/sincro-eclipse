@@ -1,18 +1,10 @@
 package GUIs.repasoGeneral;
 
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
+import javax.swing.border.TitledBorder;
 
 public class CrifradoBuilder extends JFrame implements ActionListener {
 
@@ -20,7 +12,6 @@ public class CrifradoBuilder extends JFrame implements ActionListener {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JLabel lblNewLabel;
 	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JButton btnNewButton;
@@ -30,91 +21,112 @@ public class CrifradoBuilder extends JFrame implements ActionListener {
 	private JRadioButton rdbtnNewRadioButton_2;
 	private ButtonGroup grupoBotones;
 
-	/**
-	 * Create the frame.
-	 */
+	// Inicio del constructor de la ventana
 	public CrifradoBuilder() {
+		// Configuramos el cierre de la aplicación
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		// Establecemos un tamaño más grande y cómodo para la vista
+		setSize(600, 400);
+		// Inicializamos el contenedor principal
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		// Aplicamos un margen interno de 20 píxeles para que nada toque los bordes
+		contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
+		// Usamos BorderLayout para organizar las secciones principales
+		contentPane.setLayout(new BorderLayout(20, 20));
+		// Asignamos el panel a la ventana
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 
-		JPanel panel = new JPanel();
-		panel.setBounds(48, 52, 167, 183);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		// --- PANEL IZQUIERDO: OPCIONES DE CIFRADO ---
+		// Creamos un panel con rejilla de 1 columna para alinear los botones verticalmente
+		JPanel panelOpciones = new JPanel(new GridLayout(0, 1, 10, 10));
+		// Le ponemos un borde con título para mejorar la estética
+		panelOpciones.setBorder(BorderFactory.createTitledBorder(null, "MÉTODO DE CIFRADO", TitledBorder.CENTER, TitledBorder.TOP));
 
-		lblNewLabel = new JLabel("Elige una opción:");
-		lblNewLabel.setBounds(16, 6, 173, 16);
-		panel.add(lblNewLabel);
+		// Inicializamos las opciones de radio
+		rdbtnNewRadioButton = new JRadioButton("Algoritmo CESAR");
+		rdbtnNewRadioButton_1 = new JRadioButton("Algoritmo ROT13");
+		rdbtnNewRadioButton_2 = new JRadioButton("Algoritmo RIEL");
 
-		rdbtnNewRadioButton = new JRadioButton("CESAR");
-		rdbtnNewRadioButton.setBounds(16, 34, 141, 23);
-		panel.add(rdbtnNewRadioButton);
-
-		rdbtnNewRadioButton_1 = new JRadioButton("ROT13");
-		rdbtnNewRadioButton_1.setBounds(16, 69, 141, 23);
-		panel.add(rdbtnNewRadioButton_1);
-
-		rdbtnNewRadioButton_2 = new JRadioButton("RIEL");
-		rdbtnNewRadioButton_2.setBounds(16, 104, 141, 23);
-		panel.add(rdbtnNewRadioButton_2);
-
-		btnNewButton = new JButton("CIFRAR");
-		btnNewButton.setBounds(6, 139, 117, 29);
-		panel.add(btnNewButton);
-
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(246, 52, 167, 183);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-
-		textField = new JTextField();
-		textField.setBounds(17, 39, 130, 26);
-		panel_1.add(textField);
-		textField.setColumns(10);
-
-		textField_1 = new JTextField();
-		textField_1.setBounds(17, 112, 130, 26);
-		panel_1.add(textField_1);
-		textField_1.setColumns(10);
-
-		lblNewLabel_1 = new JLabel("Texto original:");
-		lblNewLabel_1.setBounds(17, 11, 130, 16);
-		panel_1.add(lblNewLabel_1);
-
-		lblNewLabel_2 = new JLabel("Texto cifrado");
-		lblNewLabel_2.setBounds(17, 77, 130, 16);
-		panel_1.add(lblNewLabel_2);
-
-		btnNewButton_1 = new JButton("BORRAR");
-		btnNewButton_1.setBounds(17, 148, 117, 29);
-		panel_1.add(btnNewButton_1);
-		
+		// Agrupamos los botones para que solo se pueda marcar uno a la vez
 		grupoBotones = new ButtonGroup();
 		grupoBotones.add(rdbtnNewRadioButton);
 		grupoBotones.add(rdbtnNewRadioButton_1);
 		grupoBotones.add(rdbtnNewRadioButton_2);
 
+		// Añadimos los radio buttons al panel de la izquierda
+		panelOpciones.add(rdbtnNewRadioButton);
+		panelOpciones.add(rdbtnNewRadioButton_1);
+		panelOpciones.add(rdbtnNewRadioButton_2);
 		
+		// Colocamos el panel de opciones en la zona oeste (izquierda)
+		contentPane.add(panelOpciones, BorderLayout.WEST);
+
+		// --- PANEL DERECHO: ENTRADA Y SALIDA ---
+		// Usamos otra rejilla para que los campos tengan el mismo tamaño
+		JPanel panelTexto = new JPanel(new GridLayout(0, 1, 5, 5));
+		panelTexto.setBorder(BorderFactory.createTitledBorder("MENSAJES"));
+
+		// Etiqueta y campo para el texto original
+		lblNewLabel_1 = new JLabel("Texto original a procesar:");
+		textField = new JTextField();
+		textField.setFont(new Font("SansSerif", Font.PLAIN, 14));
+
+		// Etiqueta y campo para el resultado (bloqueado para edición)
+		lblNewLabel_2 = new JLabel("Resultado del cifrado:");
+		textField_1 = new JTextField();
+		textField_1.setEditable(false);
+		textField_1.setBackground(new Color(245, 245, 245));
+		textField_1.setFont(new Font("SansSerif", Font.BOLD, 14));
+
+		// Añadimos los componentes al panel de texto
+		panelTexto.add(lblNewLabel_1);
+		panelTexto.add(textField);
+		panelTexto.add(lblNewLabel_2);
+		panelTexto.add(textField_1);
+
+		// Colocamos el panel de texto en el centro para que use el espacio restante
+		contentPane.add(panelTexto, BorderLayout.CENTER);
+
+		// --- PANEL INFERIOR: BOTONES DE ACCIÓN ---
+		// Usamos un panel con FlowLayout para centrar los botones de control
+		JPanel panelAcciones = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 10));
+		
+		// Botón de Cifrar con un color de fuente azul
+		btnNewButton = new JButton("EJECUTAR CIFRADO");
+		btnNewButton.setForeground(new Color(0, 51, 153));
+		
+		// Botón de Borrar con un color de fuente rojo
+		btnNewButton_1 = new JButton("LIMPIAR CAMPOS");
+		btnNewButton_1.setForeground(new Color(153, 0, 0));
+
+		// Añadimos los botones al panel inferior
+		panelAcciones.add(btnNewButton);
+		panelAcciones.add(btnNewButton_1);
+		
+		// Colocamos el panel de botones en la zona sur (abajo)
+		contentPane.add(panelAcciones, BorderLayout.SOUTH);
+
+		// Vinculamos los botones al escuchador de eventos
 		btnNewButton.addActionListener(this);
 		btnNewButton_1.addActionListener(this);
-
+		
+		// Centramos la ventana en la pantalla al iniciar
+		setLocationRelativeTo(null);
 	}
 
+	// Método que gestiona la lógica de los clics
 	public void actionPerformed(ActionEvent e) {
+		// Acción al pulsar el botón CIFRAR
 		if (e.getSource() == btnNewButton) {
-
+			// Comprobamos si el campo de texto está vacío
 			if (textField.getText().isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Debes utilizar un texto claro", "AVISO",
-						JOptionPane.WARNING_MESSAGE);
-			} else if (!rdbtnNewRadioButton.isSelected() && !rdbtnNewRadioButton_1.isSelected()
-					&& !rdbtnNewRadioButton_2.isSelected()) {
-				JOptionPane.showMessageDialog(null, "Debes elegir una opción", "AVISO", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Escribe el texto que deseas cifrar.", "Falta información", JOptionPane.WARNING_MESSAGE);
+			} 
+			// Comprobamos si no se ha seleccionado ningún algoritmo
+			else if (!rdbtnNewRadioButton.isSelected() && !rdbtnNewRadioButton_1.isSelected() && !rdbtnNewRadioButton_2.isSelected()) {
+				JOptionPane.showMessageDialog(this, "Selecciona un método de cifrado de la izquierda.", "Falta opción", JOptionPane.WARNING_MESSAGE);
 			} else {
-				// CAMBIAMOS campo1 por campo2 para ver el resultado en la segunda caja
+				// Ejecutamos el algoritmo correspondiente según el RadioButton marcado
 				if (rdbtnNewRadioButton.isSelected())
 					textField_1.setText(sustitucion(textField.getText(), CESAR));
 				if (rdbtnNewRadioButton_1.isSelected())
@@ -122,102 +134,75 @@ public class CrifradoBuilder extends JFrame implements ActionListener {
 				if (rdbtnNewRadioButton_2.isSelected())
 					textField_1.setText(riel(textField.getText()));
 			}
-
 		}
-		// Botón borrar
+		
+		// Acción al pulsar el botón BORRAR
 		if (e.getSource() == btnNewButton_1) {
-			textField_1.setText("");
 			textField.setText("");
+			textField_1.setText("");
+			grupoBotones.clearSelection(); // Desmarcamos los radio buttons también
 		}
 	}
 
-	// Constantes para las claves de sustitución (Cesar3 y Rot13)
+	// Constantes para los desplazamientos de letras
 	private static final int CESAR = 3;
 	private static final int ROT13 = 13;
 
 	/**
-	 * Encripta una palabra pasada por parámetro por método de sustutución
-	 * 
-	 * @param palabra - String pasado por parámetro
-	 * @param clave   - posiciones pasadas como clave a sustituir
-	 * @return una palabra encriptada por sustitución tantas posiciones como la
-	 *         clave indica
+	 * Método de cifrado por sustitución (César / Rot13)
 	 */
 	private static String sustitucion(String mensaje, int clave) {
-		// Palabra a crear
 		String encriptada = "";
 		int caracter;
 
-		// Recorremos la palabra introducida
 		for (int i = 0; i < mensaje.length(); i++) {
-
-			// Si el caracter itinerante esta dentro del abecedario minúsculo
-			if (mensaje.charAt(i) >= 'a' && mensaje.charAt(i) <= 'z') {
-
-				// Encriptamos el caracter en caracter+clave
-				caracter = mensaje.charAt(i) + clave;
-
-				// Controlamos si tras la encriptacion se pasa de 'z'
-				if (caracter > 'z') {
-
-					// Restamos 26 para hacer la sustitución circular
-					caracter = caracter - 26;
-				}
-				// Concatenamos el caracter en clave a la palabra nueva que estamos generando
+			char actual = mensaje.charAt(i);
+			// Procesamos minúsculas
+			if (actual >= 'a' && actual <= 'z') {
+				caracter = actual + clave;
+				if (caracter > 'z') caracter -= 26;
 				encriptada += (char) caracter;
-
-				// En caso de mayúsculas igual con este condicional
-			} else if (mensaje.charAt(i) >= 'A' && mensaje.charAt(i) <= 'Z') {
-				caracter = mensaje.charAt(i) + clave;
-				if (caracter > 'Z') {
-					caracter -= 26;
-				}
+			} 
+			// Procesamos mayúsculas
+			else if (actual >= 'A' && actual <= 'Z') {
+				caracter = actual + clave;
+				if (caracter > 'Z') caracter -= 26;
 				encriptada += (char) caracter;
-
-				// En otro caso es un caracter especial o número y lo dejamos tal cual
-			} else {
-				encriptada += mensaje.charAt(i);
+			} 
+			// Otros caracteres se quedan igual
+			else {
+				encriptada += actual;
 			}
 		}
 		return encriptada;
 	}
 
 	/**
-	 * Encripta por el método de transposición un mensaje pasado por parámetro junta
-	 * letras impares primero, pares después concatena las dos cadenas
-	 * 
-	 * @param mensaje - String a encriptar
-	 * @return un String referente al mensaje encriptado
+	 * Método de cifrado por transposición (Riel)
 	 */
 	private static String riel(String mensaje) {
-		String cad1 = "";
-		String cad2 = "";
+		String cad1 = "", cad2 = "";
 		for (int i = 0; i < mensaje.length(); i++) {
-			if (i % 2 == 0) {
-				cad1 += mensaje.charAt(i);
-			} else {
-				cad2 += mensaje.charAt(i);
-			}
+			if (i % 2 == 0) cad1 += mensaje.charAt(i);
+			else cad2 += mensaje.charAt(i);
 		}
 		return cad1 + cad2;
 	}
 
 	/**
-	 * Launch the application.
+	 * Lanzamiento principal de la aplicación
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					CrifradoBuilder frame = new CrifradoBuilder();
-					frame.setTitle("Cifrado");
+					frame.setTitle("Cifrador de Mensajes v2.0");
 					frame.setVisible(true);
-					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-
 }

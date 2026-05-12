@@ -5,28 +5,24 @@ import java.awt.event.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.util.Scanner;
 
 public class TraductorBoletin extends JFrame implements ActionListener {
 
-	// Componentes
 	private JTextField campoPalabra, campoTraduccion;
 	private JButton botonBuscar, botonLimpiar;
 	private JMenuItem mntmNewMenuItem;
 	private JMenuItem mntmNewMenuItem_1;
-
-	// Ruta de los archivos
+	private String rutaActual;
+	
 	private final String RUTA_ARCHIVO = "C:/proyectos/ingles.txt";
+	private final String RUTA_ARCHIVO1 = "C:/proyectos/frances.txt";
 
-	/// Ruta para el archivo en Frances
-	//private final String RUTA_ARCHIVO1 = "C:/proyectos/frances.txt";
-
-	/**
-	 * Comstructor
-	 */
 	public TraductorBoletin() {
 
-		// Menús
+		rutaActual = RUTA_ARCHIVO;
+		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
@@ -41,49 +37,43 @@ public class TraductorBoletin extends JFrame implements ActionListener {
 		mnNewMenu.add(mntmNewMenuItem_1);
 		mntmNewMenuItem_1.addActionListener(this);
 
+		// 1. ESTABLECEMOS EL GRIDLAYOUT DE 3 FILAS Y 2 COLUMNAS CON SEPARACIÓN DE 10 PÍXELES
+		setLayout(new GridLayout(3, 2, 10, 10));
 		
-		setLayout(new BorderLayout(15, 15));
-		((JPanel) getContentPane()).setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
+		// 2. AÑADIMOS UN BORDE PARA QUE LOS COMPONENTES NO TOQUEN LOS BORDES DE LA VENTANA
+		((JPanel) getContentPane()).setBorder(new EmptyBorder(20, 20, 20, 20));
 
-		// --- BLOQUE SUPERIOR: ENTRADA Y SALIDA ---
-		// Panel organizado en dos columnas para las etiquetas y los campos
-		JPanel panelCampos = new JPanel(new GridLayout(2, 2, 5, 5));
-
-		// Inicializamos el campo de búsqueda (editable para teclado físico)
+		// 3. INICIALIZAMOS LOS COMPONENTES DIRECTAMENTE (SIN PANELES INTERMEDIOS)
 		campoPalabra = new JTextField();
 		campoPalabra.setFont(new Font("Arial", Font.BOLD, 18));
 
-		// Inicializamos el campo donde se mostrará la traducción (solo lectura)
 		campoTraduccion = new JTextField();
 		campoTraduccion.setEditable(false);
 		campoTraduccion.setFont(new Font("Arial", Font.BOLD, 18));
 		campoTraduccion.setBackground(new Color(240, 240, 240));
 
-		// Añadimos las instrucciones y los campos al panel
-		panelCampos.add(new JLabel("Palabra (en español):", SwingConstants.LEFT));
-		panelCampos.add(new JLabel("Traducción:", SwingConstants.RIGHT));
-		panelCampos.add(campoPalabra);
-		panelCampos.add(campoTraduccion);
-
-		add(panelCampos, BorderLayout.CENTER);
-
-		// --- BLOQUE INFERIOR: CONTROL ---
-		// Panel para los botones de acción principal
-		JPanel panelBotones = new JPanel(new FlowLayout());
 		botonBuscar = new JButton("Traducir");
 		botonLimpiar = new JButton("Borrar");
 
-		panelBotones.add(botonBuscar);
-		panelBotones.add(botonLimpiar);
-		add(panelBotones, BorderLayout.SOUTH);
+		// 4. AÑADIMOS LOS COMPONENTES AL JFRAME SIGUIENDO EL ORDEN DEL GRID (IZQUIERDA A DERECHA)
+		
+		// FILA 1
+		add(new JLabel("Palabra (Español):"));
+		add(campoPalabra);
 
-		// Vinculamos los botones al escuchador de eventos
+		// FILA 2
+		add(new JLabel("Traducción:"));
+		add(campoTraduccion);
+
+		// FILA 3
+		add(botonBuscar);
+		add(botonLimpiar);
+
+		// Vinculamos eventos
 		botonBuscar.addActionListener(this);
 		botonLimpiar.addActionListener(this);
-		// Permitimos que al pulsar "Enter" en el teclado se ejecute la búsqueda
 		campoPalabra.addActionListener(this);
 
-		// Configuración de las propiedades de la ventana
 		setTitle("Traductor Español > Inglés");
 		setSize(450, 300);
 		setLocationRelativeTo(null);
@@ -91,78 +81,68 @@ public class TraductorBoletin extends JFrame implements ActionListener {
 		setVisible(true);
 	}
 
-	// Gestión de las acciones del usuario
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		// Si el usuario pulsa el botón de limpiar
+		if (e.getSource() == mntmNewMenuItem) {
+			rutaActual = RUTA_ARCHIVO;
+			setTitle("Traductor Español > Inglés");
+			campoPalabra.setText("");
+			campoTraduccion.setText("");
+			JOptionPane.showMessageDialog(this, "Idioma cambiado a Inglés");
+		}
+		
+		if (e.getSource() == mntmNewMenuItem_1) {
+			rutaActual = RUTA_ARCHIVO1;
+			setTitle("Traductor Español > Francés");
+			campoPalabra.setText("");
+			campoTraduccion.setText("");
+			JOptionPane.showMessageDialog(this, "Idioma cambiado a Francés");
+		}
+		
 		if (e.getSource() == botonLimpiar) {
 			campoPalabra.setText("");
 			campoTraduccion.setText("");
-
 		}
 		
-
-		// Acción para inglés
 		if (e.getSource() == botonBuscar || e.getSource() == campoPalabra) {
 
-			// Obtenemos el texto introducido quitando espacios vacíos
 			String palabraBuscada = campoPalabra.getText().trim();
 
-			// Validamos que el campo no esté vacío
 			if (palabraBuscada.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "Introduce una palabra a traducir, por favor", "Aviso",
-						JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Introduce una palabra", "Aviso", JOptionPane.WARNING_MESSAGE);
 				return;
 			}
 
-			// Creamos el objeto para acceder al fichero en inglés
-			File f = new File(RUTA_ARCHIVO);
+			File f = new File(rutaActual);
 			boolean encontrado = false;
 
-			// Bloque try-with-resources para cerrar el Scanner automáticamente
 			try (Scanner s = new Scanner(f)) {
-				// Recorremos el fichero línea a línea mientras no lo encontremos
 				while (s.hasNextLine() && !encontrado) {
 					String linea = s.nextLine();
 
-					// Verificamos el formato de la línea con el separador '='
 					if (linea.contains("=")) {
-
-						// Extraemos la palabra original (parte derecha)
 						String p1 = linea.substring(linea.indexOf('=') + 1).trim();
 
-						// Comparamos la palabra del fichero con la del usuario
 						if (p1.equalsIgnoreCase(palabraBuscada)) {
-
-							// Extraemos la traducción (parte izquierda)
 							String traduccion = linea.substring(0, linea.indexOf('=')).trim();
 							campoTraduccion.setText(traduccion);
-
 							encontrado = true;
 						}
 					}
 				}
 
-				// Mostramos ventana emergente de error
 				if (!encontrado) {
 					campoTraduccion.setText("");
-
-					JOptionPane.showMessageDialog(this,
-							"Lo siento, no se ha encontrado la palabra en nuestro diccionario", palabraBuscada,
-							JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(this, "No encontrada", palabraBuscada, JOptionPane.INFORMATION_MESSAGE);
 				}
 
 			} catch (FileNotFoundException ex) {
-				// Aviso en caso de que la ruta del archivo sea incorrecta
-				JOptionPane.showMessageDialog(this, "Error: No se encuentra el archivo en la ruta especificada.",
-						"Fallo de Sistema", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Error de archivo", "ERROR", JOptionPane.ERROR_MESSAGE);
 			}
 		}
-
 	}
 
-	// Método principal para arrancar la ventana
 	public static void main(String[] args) {
 		new TraductorBoletin();
 	}

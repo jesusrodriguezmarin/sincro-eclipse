@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/PG/driversJDBC/hsqldb.jar"/>
+	<classpathentry kind="lib" path="/Users/jesusrodriguezmarin/Documents/BDeclipse/drivers/hsqldb.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

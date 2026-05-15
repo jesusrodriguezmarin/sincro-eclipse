@@ -1,4 +1,4 @@
-package GUIs.repasoGeneral;
+package GUIs.posibles;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

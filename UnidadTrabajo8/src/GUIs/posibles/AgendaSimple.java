@@ -1,4 +1,4 @@
-package GUIs.repasoGeneral;
+package GUIs.posibles;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,4 @@
-package GUIs.repasoGeneral;
+package boletin;
 
 import java.awt.*;
 import java.awt.event.*;

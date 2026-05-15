@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+
 public class AhorcadoFrameImagenesTeclado extends JFrame implements ActionListener {
 
 	private AhorcadoPOO juego; 

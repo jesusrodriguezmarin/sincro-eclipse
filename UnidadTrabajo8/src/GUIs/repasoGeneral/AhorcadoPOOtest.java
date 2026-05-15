@@ -2,6 +2,7 @@ package GUIs.repasoGeneral;
 
 import java.util.Scanner;
 
+
 public class AhorcadoPOOtest {
 
 	public static void main(String[] args) {

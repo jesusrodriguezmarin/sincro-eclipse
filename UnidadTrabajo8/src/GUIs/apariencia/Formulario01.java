@@ -26,6 +26,7 @@ public class Formulario01 extends JFrame {
 		f.setTitle("Formulario");
 		f.setBounds(100, 100, 400, 200);
 		f.setVisible(true);
+		f.setLocationRelativeTo(null);
 		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 

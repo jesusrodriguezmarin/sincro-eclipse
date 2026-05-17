@@ -10,7 +10,7 @@ public class Ej_FlowLayoutUnSoloBoton extends JFrame {
 	public Ej_FlowLayoutUnSoloBoton() {
 
 		// Alineación a la izquierda, 10px horizontal y vertical
-		setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
+		setLayout(new FlowLayout(FlowLayout.CENTER, 50, 100));
 
 		add(new JButton("Boton 1"));
 	

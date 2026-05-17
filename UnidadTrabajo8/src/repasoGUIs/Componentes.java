@@ -15,7 +15,7 @@ public class Componentes extends JFrame {
 	private JCheckBox seleccionador1;
 	private ButtonGroup grupo;
 	private JRadioButton selector1, selector2, selector3;
-	private JComboBox combo;
+	private JComboBox<String> combo;
 	private JTextArea area;
 	private JScrollPane scrol;
 	
@@ -79,7 +79,7 @@ public class Componentes extends JFrame {
 		grupo.add(selector3);
 		add(selector3);
 		
-		combo = new JComboBox();
+		combo = new JComboBox<>();
 		combo.setBounds(140, 500, 120, 20);
 		combo.addItem("Viernes");
 		combo.addItem("Sábado");

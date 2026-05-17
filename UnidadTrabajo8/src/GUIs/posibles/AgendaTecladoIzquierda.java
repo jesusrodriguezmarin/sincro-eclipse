@@ -65,29 +65,35 @@ public class AgendaTecladoIzquierda extends JFrame implements ActionListener {
 		contenedorSuperior.add(panelLista);
 		add(contenedorSuperior, BorderLayout.NORTH);
 
-		// --- panel inferior: teclado virtual para escribir nombres ---
+		// --- panel inferior: teclado virtual numérico ---
 		contenedorTeclado = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		// margen superior para separar el teclado de los campos de texto
 		contenedorTeclado.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 		
-		// malla de 3 filas y 9 columnas para las 27 letras del abecedario
-		panelTeclado = new JPanel(new GridLayout(3, 9, 5, 5));
-		// tamaño fijo para que el teclado se vea equilibrado y no deforme
-		panelTeclado.setPreferredSize(new Dimension(600, 180)); 
+		// CAMBIO 1: Malla de 4 filas y 3 columnas para el teclado numérico
+		panelTeclado = new JPanel(new GridLayout(4, 3, 5, 5));
+		// CAMBIO 2: Tamaño estilizado y compacto para que mantenga proporciones numéricas (250x180)
+		panelTeclado.setPreferredSize(new Dimension(250, 180)); 
 		
-		// cadena de texto para generar los botones mediante un bucle for
-		String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"; 
-		for (int i = 0; i < abc.length(); i++) {
-			JButton btn = new JButton("" + abc.charAt(i));
-			// fuente en negrita para facilitar la lectura de las teclas
+		// CAMBIO 3: Bucle del 1 al 9 para rellenar las tres primeras filas
+		for (int i = 1; i <= 9; i++) {
+			JButton btn = new JButton("" + i);
 			btn.setFont(new Font("Arial", Font.BOLD, 14));
-			// quitamos el foco para mejorar la estetica al pulsar
 			btn.setFocusable(false);
-			// asignamos el escuchador a cada tecla del abecedario
 			btn.addActionListener(this);
-			// insertamos el boton en el panel del teclado
 			panelTeclado.add(btn);
 		}
+		
+		// Última fila: paneles vacíos en los lados para dejar el 0 centrado solo
+		panelTeclado.add(new JPanel()); // Hueco izquierdo
+		
+		JButton btn0 = new JButton("0");
+		btn0.setFont(new Font("Arial", Font.BOLD, 14));
+		btn0.setFocusable(false);
+		btn0.addActionListener(this);
+		panelTeclado.add(btn0); // Botón central
+		
+		panelTeclado.add(new JPanel()); // Hueco derecho
 		
 		// metemos la malla de botones en el panel centralizador
 		contenedorTeclado.add(panelTeclado);
@@ -100,15 +106,10 @@ public class AgendaTecladoIzquierda extends JFrame implements ActionListener {
 
 		// configuracion de las propiedades de la ventana
 		setTitle("AgendaTeclado");
-		// definimos un tamaño de ventana estrecho y funcional
 		setSize(700, 600); 
-		// tamaño minimo para evitar que se descoloquen los componentes
 		setMinimumSize(new Dimension(650, 550));
-		// centramos la ventana respecto a la pantalla del usuario
 		setLocationRelativeTo(null);
-		// finalizamos la ejecucion al cerrar la ventana
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		// hacemos visible la aplicacion completa
 		setVisible(true);
 	}
 
@@ -119,10 +120,10 @@ public class AgendaTecladoIzquierda extends JFrame implements ActionListener {
 			JButton boton = (JButton) e.getSource();
 			String textoBoton = boton.getText();
 
-			// si el boton es una letra individual del teclado virtual
-			if (textoBoton.length() == 1 && e.getSource() != botonAñadir && e.getSource() != botonLimpiar) {
-				// añadimos la letra seleccionada al campo de nombre
-				campoNombre.setText(campoNombre.getText() + textoBoton);
+			// CAMBIO 4: Filtramos para que solo capture dígitos del 0 al 9 de longitud 1
+			if (textoBoton.length() == 1 && Character.isDigit(textoBoton.charAt(0))) {
+				// ¡Escribimos en el campo de teléfono, que es lo lógico!
+				campoTelefono.setText(campoTelefono.getText() + textoBoton);
 			}
 		}
 

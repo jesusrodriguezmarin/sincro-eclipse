@@ -24,19 +24,21 @@ public class ConversorDecimalRomanosDosPanelesImagenRutaRelativa extends JFrame 
 		
 		// Inicializamos el primer contenedor de componentes
 		panel1 = new JPanel();
+		
 		// Establecemos una rejilla de una columna con 10 píxeles de separación vertical
 		panel1.setLayout(new GridLayout(0, 1, 0, 10));
 		// Añadimos una etiqueta centrada para indicar la entrada de datos
 		panel1.add(new JLabel("Nº decimal", JLabel.CENTER));
-		// Creamos el campo de texto con un ancho de 10 columnas
+		// Creamos el campo de texto con un ancho de 10
 		campo1 = new JTextField(10);
-		// Vinculamos el campo al escuchador para detectar la tecla Enter
+		// Vinculamos el campo al listner
 		campo1.addActionListener(this);
 		// Añadimos el campo de entrada al primer panel
 		panel1.add(campo1);
 		
 		// Inicializamos el segundo contenedor para el resultado
 		panel2 = new JPanel();
+		
 		// Aplicamos el mismo diseño de rejilla que en el panel anterior
 		panel2.setLayout(new GridLayout(0, 1, 0, 10));
 		// Añadimos la etiqueta informativa para el número romano
@@ -60,7 +62,7 @@ public class ConversorDecimalRomanosDosPanelesImagenRutaRelativa extends JFrame 
 		// Vinculamos el botón al escuchador de eventos de esta clase
 		boton.addActionListener(this);
 		
-		// Definimos un diseño de flujo centrado con 50 píxeles de separación entre elementos
+		// Definimos un diseño de flow centrado con 50 píxeles de separación entre elementos
 		setLayout(new FlowLayout(FlowLayout.CENTER, 50, 50));
 		// Insertamos el panel de entrada en la ventana
 		add(panel1);

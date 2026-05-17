@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class AgendaSimple extends JFrame implements ActionListener {
+public class AgendaTop extends JFrame implements ActionListener {
 
     // Componentes para la gestión de datos y visualización
     private JTextField txtNombre, txtTelefono;
@@ -14,7 +14,7 @@ public class AgendaSimple extends JFrame implements ActionListener {
     private JButton btnAñadir, btnEliminar, btnGuardar;
 
     // Inicio del constructor de la ventana
-    public AgendaSimple() {
+    public AgendaTop() {
         // Establecemos el título que aparecerá en la barra superior
         setTitle("Mi Agenda de Contactos");
         // Definimos el tamaño inicial de la ventana
@@ -169,6 +169,6 @@ public class AgendaSimple extends JFrame implements ActionListener {
     // Punto de entrada de la aplicación
     public static void main(String[] args) {
         // Iniciamos la interfaz y la hacemos visible
-        new AgendaSimple().setVisible(true);
+        new AgendaTop().setVisible(true);
     }
 }

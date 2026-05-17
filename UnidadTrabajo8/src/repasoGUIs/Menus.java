@@ -1,4 +1,4 @@
-package GUIs.repasoGeneral;
+package repasoGUIs;
 
 import java.awt.EventQueue;
 
@@ -9,7 +9,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
-public class Pruebas extends JFrame {
+public class Menus extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -21,7 +21,7 @@ public class Pruebas extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Pruebas frame = new Pruebas();
+					Menus frame = new Menus();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class Pruebas extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Pruebas() {
+	public Menus() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		

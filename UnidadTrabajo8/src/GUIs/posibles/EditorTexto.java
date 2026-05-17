@@ -28,8 +28,11 @@ public class EditorTexto extends JFrame implements ActionListener {
 	private JTextArea area;
 	private JScrollPane scpanel;
 	
-	// Inicio del constructor para configurar la interfaz del editor
+	/**
+	 * Constructor
+	 */
 	public EditorTexto () {
+		
 		// Inicializamos la barra de menú superior
 		menubar = new JMenuBar();
 		// Vinculamos la barra de menú a la estructura del JFrame
@@ -42,7 +45,7 @@ public class EditorTexto extends JFrame implements ActionListener {
 		
 		// Inicializamos el ítem para limpiar el documento
 		nuevo = new JMenuItem("Nuevo");
-		// Registramos el escuchador para detectar clics en Nuevo
+		// Vinculamos con el método
 		nuevo.addActionListener(this);
 		// Añadimos la opción al menú Archivo
 		menu.add(nuevo);
@@ -108,6 +111,7 @@ public class EditorTexto extends JFrame implements ActionListener {
 	
 	// Método para seleccionar y leer un archivo de texto
 	public void abrir() {
+		
 		// Creamos el selector de archivos del sistema
 		JFileChooser selector = new JFileChooser();
 		// Mostramos la ventana de diálogo para abrir y capturamos la respuesta
@@ -120,8 +124,10 @@ public class EditorTexto extends JFrame implements ActionListener {
 			
 			// Intentamos leer el archivo usando un flujo de lectura con búfer
 			try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+				
 				// Limpiamos el editor antes de volcar el nuevo contenido
 				area.setText("");
+				
 				// Variable para leer el archivo línea por línea
 				String linea;
 				// Recorremos el fichero hasta que no queden líneas por leer

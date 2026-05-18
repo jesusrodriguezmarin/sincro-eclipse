@@ -79,6 +79,9 @@ public class Piezas {
 	 */
 	public static void main(String[] args) {
 
+		// Comando para evitar que salgan los errores en consola
+		System.setErr(new java.io.PrintStream(java.io.OutputStream.nullOutputStream()));
+		
 		// Instanciamos
 		Piezas p = new Piezas();
 		p.obtenerConexion();

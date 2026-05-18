@@ -26,3 +26,14 @@ Thumbs.db
 
 bin/
 *.class
+
+# --- BASES DE DATOS LOCALES (WINDOWS / MAC) ---
+# Bloquea todos los archivos temporales que genera HSQLDB al arrancar
+*.log
+*.properties
+*.script
+*.tmp
+*.lck
+
+# Bloquea cualquier carpeta llamada "envios" por si se crea dentro del proyecto
+**/envios/

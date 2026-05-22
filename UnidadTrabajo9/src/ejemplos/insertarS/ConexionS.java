@@ -17,7 +17,7 @@ public class ConexionS {
 	private Connection conexion = null;
 
 	// Variable para la ruta de la base de datos (Misma ruta de tu Mac)
-	private String nombreDB = "/Users/jesusrodriguezmarin/Documents/BDeclipse/envios/envios";
+	private String nombreDB = "C:/PG/envios/envios";
 
 	// Variable para el driver
 	private String driver = "org.hsqldb.jdbcDriver";

@@ -62,15 +62,25 @@ public class FormularioEliminarSP extends JFrame implements ActionListener {
 		sc.setBounds(30, 240, 360, 150);
 		add(sc);
 
-		// Al arrancar: instanciamos objeto, conectamos, mostramos datos y cerramos
+		// --- Al arrancar: instanciamos objeto, conectamos, mostramos datos y cerramos ---
+		
+		// Creamos nueva instancia del objeto con declarado anteriormente y creado en otra clase
 		con = new ConexionEliminarSP();
+		
+		// Aplicamos el método obtenerConexión de la clase con (ConexionEliminarSP)
 		con.obtenerConexion(); 
+		
+		// Aplicamos el método mostrarSP de la clase con y le pasamos la tabla creada en esta clase
 		con.mostrarSP(tabla);
+		
+		// Aplicamos el método de desconexión de la clase cons
 		con.desconectar();
 	}
 
 	/** Método para limpiar los campos de texto */
 	public void limpiar() {
+		
+		// Cuando llamamos a este método se asigna un String vacío a los campos
 		txtCodS.setText("");
 		txtCodP.setText("");
 	}
@@ -81,27 +91,43 @@ public class FormularioEliminarSP extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
-			// Recogemos las variables de la interfaz
+			// Recogemos las variables de la interfaz escritas por el usuario
 			String codeS = txtCodS.getText();
 			String codeP = txtCodP.getText();
 
 			// --- BOTÓN ELIMINAR ---
 			if (e.getSource() == eliminar) {
+				
+				// Controlamos que ambos compos se rellenen
 				if (codeS.isEmpty() || codeP.isEmpty()) {
 					JOptionPane.showMessageDialog(null, "Es obligatorio introducir tanto el código de Proveedor como el de Pieza", "Campos vacíos",
 							JOptionPane.ERROR_MESSAGE);
 				} else {
+					
+					// Conectamos con un nuevo objeto de conexion con
 					con = new ConexionEliminarSP();
+					
+					// Obtenemos conexión
 					con.obtenerConexion(); 
+					
+					// Aplicamos el método eliminar con la consulta que obtenemos de la clase instanciada
 					con.eliminarSP(codeS, codeP); 
+					
+					// Aplicamos mostrar tabla método de la clase con
 					con.mostrarSP(tabla); 
+					
+					// Desconectamos con el método correspondiente de la clase con
 					con.desconectar(); 
+					
+					// Limpiamos los campos con el método creado en esta clase
 					limpiar();
 				}
 			}
 
 			// --- BOTÓN BORRAR CAMPOS ---
 			if (e.getSource() == borrar) {
+				
+				// Aplicamos el método creado en esta clase para limpiar
 				limpiar();
 			}
 

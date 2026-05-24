@@ -39,10 +39,6 @@ public class ConexGestionGlobal {
 		}
 	}
 
-	/**
-	 * Muestra los datos de la tabla seleccionada utilizando índices por posición 
-	 * para garantizar compatibilidad total con HSQLDB.
-	 */
 	public void mostrarTabla(JTable tabla, String tablaSeleccionada) {
 		try {
 			String sql = "";
@@ -66,7 +62,6 @@ public class ConexGestionGlobal {
 			modelo.setColumnIdentifiers(atributos);
 
 			while (rs.next()) {
-				// Creamos el array adaptando su tamaño exacto a la tabla activa
 				Object[] fila = new Object[modelo.getColumnCount()];
 				
 				if (tablaSeleccionada.equals("Proveedores (S)")) {
@@ -97,9 +92,6 @@ public class ConexGestionGlobal {
 		}
 	}
 
-	/**
-	 * Cuenta el número de filas de la tabla activa usando count(*)
-	 */
 	public void contarFilas(String tablaSeleccionada) {
 		try {
 			String nombreTablaBD = tablaSeleccionada.equals("Proveedores (S)") ? "s" : tablaSeleccionada.equals("Piezas (P)") ? "p" : "sp";
@@ -119,22 +111,11 @@ public class ConexGestionGlobal {
 		}
 	}
 
-	/**
-	 * Inserta un registro validando previamente duplicados de claves primarias o compuestas
-	 */
 	public void insertarRegistro(JTable tabla, String tablaSeleccionada, String f1, String f2, String f3, String f4, String f5) {
 		try {
 			PreparedStatement pst = null;
 			
 			if (tablaSeleccionada.equals("Proveedores (S)")) {
-				PreparedStatement check = conexion.prepareStatement("select count(*) from s where sn = ?");
-				check.setString(1, f1.trim());
-				ResultSet rs = check.executeQuery();
-				if (rs.next() && rs.getInt(1) > 0) {
-					JOptionPane.showMessageDialog(null, "Error: Ya existe un proveedor con el código " + f1, "Clave duplicada", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-				
 				pst = conexion.prepareStatement("insert into s values (?, ?, ?, ?)");
 				pst.setString(1, f1.trim());
 				pst.setString(2, f2.trim());
@@ -142,14 +123,6 @@ public class ConexGestionGlobal {
 				pst.setString(4, f4.trim());
 				
 			} else if (tablaSeleccionada.equals("Piezas (P)")) {
-				PreparedStatement check = conexion.prepareStatement("select count(*) from p where pn = ?");
-				check.setString(1, f1.trim());
-				ResultSet rs = check.executeQuery();
-				if (rs.next() && rs.getInt(1) > 0) {
-					JOptionPane.showMessageDialog(null, "Error: Ya existe una pieza con el código " + f1, "Clave duplicada", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-
 				pst = conexion.prepareStatement("insert into p values (?, ?, ?, ?, ?)");
 				pst.setString(1, f1.trim());
 				pst.setString(2, f2.trim());
@@ -158,15 +131,6 @@ public class ConexGestionGlobal {
 				pst.setString(5, f5.trim());
 				
 			} else {
-				PreparedStatement check = conexion.prepareStatement("select count(*) from sp where sn = ? and pn = ?");
-				check.setString(1, f1.trim());
-				check.setString(2, f2.trim());
-				ResultSet rs = check.executeQuery();
-				if (rs.next() && rs.getInt(1) > 0) {
-					JOptionPane.showMessageDialog(null, "Error: Ya existe un envío del proveedor " + f1 + " para la pieza " + f2, "Clave compuesta duplicada", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-
 				pst = conexion.prepareStatement("insert into sp values (?, ?, ?)");
 				pst.setString(1, f1.trim());
 				pst.setString(2, f2.trim());
@@ -179,12 +143,13 @@ public class ConexGestionGlobal {
 			mostrarTabla(tabla, tablaSeleccionada);
 			
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "Error al insertar. Verifica formatos numéricos o la existencia de las claves ajenas.", "Error en Alta", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error al insertar. Verifica formatos numéricos o que la clave no esté duplicada.", "Error en Alta", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
 	/**
-	 * Elimina la fila seleccionada con el ratón basándose en su clave correspondiente
+	 * ELIMINAR DEFINITIVO: Usa operador LIKE con comodín '%' para destruir el registro 
+	 * saltándose los problemas de bloqueo por tamaño fijo de caracteres (CHAR) en HSQLDB.
 	 */
 	public void eliminarRegistroSeleccionado(JTable tabla, String tablaSeleccionada) {
 		int filaSeleccionada = tabla.getSelectedRow();
@@ -195,28 +160,80 @@ public class ConexGestionGlobal {
 
 		try {
 			PreparedStatement pst = null;
-			String f1 = tabla.getValueAt(filaSeleccionada, 0).toString();
+			// Capturamos el código limpio de la fila clicada
+			String f1 = tabla.getValueAt(filaSeleccionada, 0).toString().trim();
 
 			if (tablaSeleccionada.equals("Proveedores (S)")) {
-				pst = conexion.prepareStatement("delete from s where sn = ?");
-				pst.setString(1, f1);
+				pst = conexion.prepareStatement("delete from s where sn like ?");
+				pst.setString(1, f1 + "%"); // Borra concordando el inicio sin importar espacios extra
 			} else if (tablaSeleccionada.equals("Piezas (P)")) {
-				pst = conexion.prepareStatement("delete from p where pn = ?");
-				pst.setString(1, f1);
+				pst = conexion.prepareStatement("delete from p where pn like ?");
+				pst.setString(1, f1 + "%");
 			} else {
-				String f2 = tabla.getValueAt(filaSeleccionada, 1).toString();
-				pst = conexion.prepareStatement("delete from sp where sn = ? and pn = ?");
-				pst.setString(1, f1);
-				pst.setString(2, f2);
+				String f2 = tabla.getValueAt(filaSeleccionada, 1).toString().trim();
+				pst = conexion.prepareStatement("delete from sp where sn like ? and pn like ?");
+				pst.setString(1, f1 + "%");
+				pst.setString(2, f2 + "%");
 			}
 
-			pst.executeUpdate();
+			int filasAfectadas = pst.executeUpdate();
 			pst.close();
-			JOptionPane.showMessageDialog(null, "Registro eliminado de la base de datos.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-			mostrarTabla(tabla, tablaSeleccionada);
+
+			if (filasAfectadas > 0) {
+				JOptionPane.showMessageDialog(null, "Registro eliminado correctamente de la base de datos.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+				mostrarTabla(tabla, tablaSeleccionada); // Refresco inmediato del JScrollPane
+			} else {
+				JOptionPane.showMessageDialog(null, "No se pudo eliminar el registro. El código no coincide.", "Aviso", JOptionPane.WARNING_MESSAGE);
+			}
 			
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "No se puede eliminar el registro. Comprueba si está vinculado a un envío en la tabla SP (Integridad Referencial).", "Error de Clave Ajena", JOptionPane.ERROR_MESSAGE);
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "No se puede eliminar el registro.\nComprueba si este elemento está vinculado en un envío activo dentro de la tabla SP (Violación de Integridad Referencial).", "Error de Clave Ajena", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+
+	/**
+	 * MODIFICAR DEFINITIVO: Permite actualizar cualquier campo basándose en la clave primaria
+	 */
+	public void modificarRegistro(JTable tabla, String tablaSeleccionada, String f1, String f2, String f3, String f4, String f5) {
+		try {
+			PreparedStatement pst = null;
+
+			if (tablaSeleccionada.equals("Proveedores (S)")) {
+				pst = conexion.prepareStatement("update s set snombre = ?, estado = ?, ciudad = ? where sn like ?");
+				pst.setString(1, f2.trim());
+				pst.setInt(2, Integer.parseInt(f3.trim()));
+				pst.setString(3, f4.trim());
+				pst.setString(4, f1.trim() + "%");
+
+			} else if (tablaSeleccionada.equals("Piezas (P)")) {
+				pst = conexion.prepareStatement("update p set pnombre = ?, color = ?, peso = ?, ciudad = ? where pn like ?");
+				pst.setString(1, f2.trim());
+				pst.setString(2, f3.trim());
+				pst.setInt(3, Integer.parseInt(f4.trim()));
+				pst.setString(4, f5.trim());
+				pst.setString(5, f1.trim() + "%");
+
+			} else {
+				pst = conexion.prepareStatement("update sp set cant = ? where sn like ? and pn like ?");
+				pst.setInt(1, Integer.parseInt(f3.trim()));
+				pst.setString(2, f1.trim() + "%");
+				pst.setString(3, f2.trim() + "%");
+			}
+
+			int filasAfectadas = pst.executeUpdate();
+			pst.close();
+
+			if (filasAfectadas > 0) {
+				JOptionPane.showMessageDialog(null, "Registro modificado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+				mostrarTabla(tabla, tablaSeleccionada);
+			} else {
+				JOptionPane.showMessageDialog(null, "No se encontró el registro para actualizar.", "Aviso", JOptionPane.WARNING_MESSAGE);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Error al modificar. Revisa los formatos numéricos e intenta de nuevo.", "Error en Modificación", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 }

@@ -132,12 +132,15 @@ public class ConexionEliminarSP {
 			String sql = "DELETE FROM \"SP\" WHERE TRIM(\"sn\") = ? AND TRIM(\"pn\") = ?";
 			PreparedStatement pst = conexion.prepareStatement(sql);
 			
+			// Coloca el texto limpio en la posición correspondiente de variable
 			pst.setString(1, sLimpio);
 			pst.setString(2, pLimpio);
 			
+			// Contea en número de filas aceptadas
 			int filasAfectadas = pst.executeUpdate();
 			pst.close();
 			
+			// Según las filas afecgadas informamoss
 			if (filasAfectadas > 0) {
 				JOptionPane.showMessageDialog(null, "Envío eliminado correctamente", "Éxito", 
 						JOptionPane.INFORMATION_MESSAGE);

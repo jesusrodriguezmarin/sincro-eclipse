@@ -149,7 +149,7 @@ public class ConexionP {
 			pst.setString(1, cod);
 			pst.setString(2, nom);
 			
-			// El campo colo acepta nulos
+			// El campo col acepta nulos
 			if (col.isEmpty())
 				pst.setString(3, null);
 			else

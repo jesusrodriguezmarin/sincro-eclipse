@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 public class ConexGestionGlobal {
 
 	private Connection conexion = null;
-	private String nombreDB = "/Users/jesusrodriguezmarin/Documents/BDeclipse/envios/envios";
+	private String nombreDB = "C:/PG/envios/envios";
 	private String driver = "org.hsqldb.jdbcDriver";
 	private String url = "jdbc:hsqldb:file:" + nombreDB;
 

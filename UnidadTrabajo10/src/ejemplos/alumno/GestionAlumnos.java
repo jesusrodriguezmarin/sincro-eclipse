@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public class GestionAlumnos {
 	
-	private static final String FICHERO = "C:/PG/alumnos.dat";
+	private static final String FICHERO = "/Users/jesusrodriguezmarin/Documents/BDeclipse/alumno.dat";
+;
 	
 	/**
 	 * Guarda el fichero en una lista de alumnos

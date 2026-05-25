@@ -2,23 +2,16 @@ package ejemplos.alumno;
 
 import java.util.ArrayList;
 
-public class AddAlumno {
+public class ReadAlumno {
 
 	public static void main(String[] args) {
 		
-		// Recuperamos la lista almacenada
+		// Recuperamos la lista almacenada en el fichero
 		ArrayList<Alumno> alumnos = GestionAlumnos.leerLista();
 		
-		// Añadimos un nuevo alumno
-		alumnos.add(new Alumno("Jesús", 1.0f));
-		
-		// Guardamos la lista actualizada
-		GestionAlumnos.guardarLista(alumnos);
-		
-		// Mostramos la lista actualizada
+		// Mostramos los objetos almacenados
 		for (int i = 0; i < alumnos.size(); i++) {
 			System.out.println(alumnos.get(i));
 		}
 	}
-
 }

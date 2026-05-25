@@ -1,0 +1,10 @@
+package ejemplos.mac;
+
+public class UpdateAlumnoUPDATE05 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

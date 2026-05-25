@@ -12,7 +12,7 @@ public class GuardarAlumno {
 		
 		// Control de errores
 		try {
-			ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("C:/PG/alumnos.dat"));
+			ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("/Users/jesusrodriguezmarin/Documents/BDeclipse/alumno.dat"));
 			
 			salida.writeObject(a);
 			

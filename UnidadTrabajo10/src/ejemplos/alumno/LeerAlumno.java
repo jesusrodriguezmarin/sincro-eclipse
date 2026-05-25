@@ -9,7 +9,7 @@ public class LeerAlumno {
 
 		// Control de errores
 		try {
-			ObjectInputStream entrada = new ObjectInputStream(new FileInputStream("C:/PG/alumnos.dat"));
+			ObjectInputStream entrada = new ObjectInputStream(new FileInputStream("/Users/jesusrodriguezmarin/Documents/BDeclipse/alumno.dat"));
 			
 			Alumno a = (Alumno) entrada.readObject();
 			

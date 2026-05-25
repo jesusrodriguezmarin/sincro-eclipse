@@ -2,29 +2,33 @@ package ejemplos.alumno;
 
 import java.util.ArrayList;
 
-public class UpdateAlumno {
+public class DeleteAlumno {
 
 	public static void main(String[] args) {
-
+		
 		// Recuperamos la lista almacenada
 		ArrayList<Alumno> alumnos = GestionAlumnos.leerLista();
 		
-		// Recorremos la lista
+		// Recorrenos la lista
 		for (int i = 0; i < alumnos.size(); i++) {
 			
-			// Buscamos al alumno que queremos modificar
+			// Buscamos el alumno que queremos borrar
 			if (alumnos.get(i).getNombre().equals("Jesús")) {
 				
-				// Modificamos su nota
-				alumnos.get(i).setNota(10.0f);
+				// Eliminamos al alumno
+				alumnos.remove(i);
 				
 				// Informamos
-				System.out.println("Alumno modificado");
+				System.out.println("Alumno eliminado");
+				
+				// Una vez encontrado y eliminado finalizamos el bucle
+				break;
 			}
 		}
-
-		// Guardamos la lista actualizada
+		
+		// Guardamos de nuevo la lista con la actualización
 		GestionAlumnos.guardarLista(alumnos);
+
 	}
 
 }

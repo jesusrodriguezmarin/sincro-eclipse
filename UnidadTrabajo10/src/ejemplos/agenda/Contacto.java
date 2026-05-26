@@ -10,7 +10,7 @@ public class Contacto implements Serializable {
 	private int telefono;
 	
 	/**
-	 * Constructor: Sirve para crear un contacto nuevo pasándole el nombre y el teléfono
+	 * Constructor: creamos un contacto nuevo pasándole el nombre y el teléfono
 	 */
 	public Contacto(String nombre, int telefono) {
 		this.nombre = nombre;
@@ -18,28 +18,39 @@ public class Contacto implements Serializable {
 	}
 
 	/**
-	 * Getters y Setters: Los métodos necesarios para poder leer y modificar 
-	 * los atributos desde otras clases (como tu AgendaPer).
+	 * Devuelve el nombre del contacto
+	 * @return - String - nombre
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
+	/**
+	 * Establece el nombre del contacto
+	 * @param nombre a establecer
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * Devuelve el teléfono del contacto
+	 * @return - int - teléfono del contacto
+	 */
 	public int getTelefono() {
 		return telefono;
 	}
 
+	/**
+	 * Establece el teléfono del contacto
+	 * @param telefono a establecer
+	 */
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
 
 	/**
-	 * toString: Este método sirve para que cuando hagamos un System.out.println(contacto),
-	 * en lugar de salir un código raro por pantalla, pinte los datos bonitos.
+	 * Muestra el nombre y teléfono del contacto
 	 */
 	@Override
 	public String toString() {

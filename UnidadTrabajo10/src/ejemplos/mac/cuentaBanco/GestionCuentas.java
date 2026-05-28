@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class GestionCuentas {
 
 	// Ruta del fichero 
-	private static final String FICHERO = "C:/PG/cuentabanco.dat";
+	private static final String FICHERO = "/Users/jesusrodriguezmarin/Documents/BDeclipse/cuentasbanco.dat";
 
 	// Lista que utilizamos para cargar en memoria las cuentas almacenadas como variable global
 	private static ArrayList<CuentaBanco> listaCuentas;

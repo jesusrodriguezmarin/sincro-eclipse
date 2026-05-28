@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class GestionPeliculas {
 
 	// Ruta del fichero 
-	private static final String FICHERO = "C:/PG/pelicula.dat";
+	private static final String FICHERO = "/Users/jesusrodriguezmarin/Documents/BDeclipse/peliculas.dat";
 
 	// Lista que utilizamos para cargar en memoria las películas almacenadas como variable global
 	private static ArrayList<Pelicula> listaPeliculas;

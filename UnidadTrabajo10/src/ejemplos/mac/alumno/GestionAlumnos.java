@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class GestionAlumnos {
 
-	// Ruta del fichero adaptada para el control de alumnos
-	private static final String FICHERO = "/Users/jesusrodriguezmarin/Documents/BDeclipse/alumno.dat";
+	// Ruta del fichero 
+	private static final String FICHERO = "C:/PG/alumnado.dat";
 
 	// Lista que utilizamos para cargar en memoria los alumnos almacenados como variable global
 	private static ArrayList<Alumno> listaAlumnos;
@@ -92,7 +92,7 @@ public class GestionAlumnos {
 	 */
 	public static void main(String[] args) {
 
-		// Variables adaptadas al caso de Calificaciones de Alumnos
+		// Variables 
 		int opcion;         // Opción del menú elegida por el usuario
 		String nombre;      // Nombre del alumno (Clave única de búsqueda)
 		double nota;        // Nota final del alumno
@@ -131,7 +131,7 @@ public class GestionAlumnos {
 					if (buscarAlumno(nombre) != -1) {
 						System.out.println("El alumno '" + nombre + "' ya está registrado.");
 					} else {
-						// Pedimos la nota inicial (usando Double.parseDouble)
+						// Pedimos la nota inicial
 						System.out.print("Introduce la nota final: ");
 						nota = Double.parseDouble(teclado.nextLine());
 						
@@ -168,7 +168,7 @@ public class GestionAlumnos {
 					if (res == -1) {
 						System.out.println("No se ha encontrado al alumno '" + nombre + "'.");
 					} else {
-						// Pedimos la nueva nota (usando Double.parseDouble)
+						// Pedimos la nueva nota
 						System.out.print("Introduce la nueva nota: ");
 						nota = Double.parseDouble(teclado.nextLine().trim());
 

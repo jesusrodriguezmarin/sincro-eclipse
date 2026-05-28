@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class AgendaPer {
 
 	// Ruta del fichero
-	private static final String FICHERO = "/Users/jesusrodriguezmarin/Documents/BDeclipse/alumno.dat";
+	private static final String FICHERO = "C:/PG/agenda.dat";
 
 	// Lista que utilizamos para cargar en memoria los contactos almacenados como
 	// variable global
